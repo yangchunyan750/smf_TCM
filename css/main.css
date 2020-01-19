@@ -1,0 +1,108 @@
+body{
+	margin:0;
+	padding:0;
+	font-size:16px;
+	width:100%;
+	height:100%;
+}
+li{
+	list-style: none;
+}
+#wrapper{
+	position: relative;
+}
+#header{
+	position:absolute;
+	width:100%;
+	background-color:rgb(15,156,237);
+}
+#header-nav{
+	position:relative;
+	height:38px;
+	line-height:38px;
+}
+#header .title{
+	font-size:1em;
+	text-align: center;
+	color:#fff;
+}
+#header .logo{
+	background: url(../img/logo.png) no-repeat;
+	width:100%;
+}
+#header .info{
+	position:absolute;
+	top:-18px;
+	right:10px;
+	font-size:0.3em;
+}
+
+#header .info li{
+	float:left;
+	margin-left:5px;
+}
+#header .info a{
+	color:#666;
+}
+#content{
+	width:100%;
+	height:800px;
+	position: absolute;
+	left:0px;
+	top:33px;
+}
+#content-left{
+	width:195px;
+	height:900px;
+	border-right:5px solid #f2f3f5;
+	/* background-color:rgb(222,236,247); */
+}
+#content-left .panel ul>li{
+	width:195px;
+	height:50px;
+	margin-left:-40px;
+	line-height:50px;
+	border:1px solid #aaa;
+	text-align:center;
+	cursor:pointer;
+}
+#content-right{
+	position:absolute;
+	top:58px;
+	left:195px;
+	height:1080px;
+}
+#footer{
+	position:fixed;
+	bottom:0px;
+	width:100%;
+	height:38px;
+	background-color:rgb(15,156,237);
+}
+#Popup{
+	display: none;
+}
+#loginWin{
+	position: absolute;
+	left:50%;
+	top:50%;
+}
+#loginWin .close_button{
+	position: relative;
+	top:-74px;
+	right:-180px;
+	color:#aaa;
+}
+#loginWin .form{
+	width:400px; 
+	position: absolute;
+	left:-180px;
+	top:-160px;
+	background-color:#fff;
+}
+#loginWin .form_content{
+	text-align: center;
+}
+#loginWin p{
+	margin-top:25px;
+}
