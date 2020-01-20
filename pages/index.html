@@ -14,6 +14,7 @@
 				<div id="header-nav">
 					<h1 class="title">中医综合诊断系统</h1>
 					<ul class="info">
+						<li class="visitor"><a href="">游客</a></li>
 						<li class="login"><a href="">登录</a></li>
 						<li class="exit"><a href="">退出</a></li>
 					</ul>
@@ -23,19 +24,156 @@
 				<div id="content-left">
 					<div class="panel">
 						<ul>
-							<li>基本信息</li>
-							<li>问诊诊断</li>
-							<li>体质辨识</li>
-							<li>调养方案</li>
+							<li class="info_content" style="background-color:rgb(31,184,205);color:#fff">基本信息</li>
+							<li class="inquiry_content">问诊诊断</li>
+							<li class="constitution_content">体质辨识</li>
+							<li class="pro_content">调养方案</li>
 						</ul>
 					</div>
 				</div>
 				<div id="content-right">
-					<div class="info_content">
+					<div class="info_content content_wrap">
+						<div class="info_title">基本信息</div>
+						<div class="doc">
+							<label for="docNum">医生编号</label><input type="textbox" id="docNum"/>
+							<label for="docNum">医生姓名</label><input type="textbox" id="docNum"/>
+							<label for="docNum">科室</label><input type="textbox" id="docNum"/>
+						</div>
+						<div class="date">
+							<label for="date_time">体检日期</label><input type="textbox" id="date_time"/>
+						</div>
+						<div class="sm_number">
+							<label for="s_num">流水号</label><input type="textbox" id="s_num"/>
+							<label for="m_num">病历号</label><input type="textbox" id="m_num"/>
+						</div>
+						<div class="count">
+							<label for="count_num">检测次数</label><input type="textbox" id="count_num"/>
+						</div>
+						<div class="personal">
+							<label for="name">姓名</label><input type="textbox" id="name"/>
+							<label for="sex">性别</label><input type="textbox" id="sex"/>
+							<label for="IDNum">身份证号</label><input type="textbox" id="IDNum"/>
+							<label for="birthDate">出生日期</label><input type="textbox" id="birthDate"/>
+							<label for="age">年龄</label><input type="textbox" id="age"/>
+							<label for="status">婚姻状况</label><input type="textbox" id="status"/>
+							<label for="height">身高</label><input type="textbox" id="height"/>
+							<label for="weight">体重</label><input type="textbox" id="weight"/>
+							<label for="p_blood">血压</label><input type="textbox" id="p_blood"/>
+							<label for="s_blood">血糖</label><input type="textbox" id="s_blood"/>
+							<label for="t_blood">血型</label><input type="textbox" id="t_blood"/>
+							<label for="nation">民族</label><input type="textbox" id="nation"/>
+							<label for="occupation">职业</label><input type="textbox" id="occupation"/>
+							<label for="work_unit">工作单位</label><input type="textbox" id="work_unit"/>
+							<label for="address">地址</label><input type="textbox" id="address"/>
+							<label for="phone">联系电话</label><input type="textbox" id="phone"/>
+							<label for="email">邮箱</label><input type="textbox" id="email"/>
+						</div>
+						<div class="next">
+							<button class="next_btn">下一步</button>
+							<button class="save">保存</button>
+						</div>
 					</div>
-					<div class="inquiry_content"></div>
-					<div class="constitution_content"></div>
-					<div class="pro_content"></div>
+					<div class="inquiry_content content_wrap" style="display:none">
+						<div class="inquiry_title">问诊诊断</div>
+						<p>1、您手脚发凉吗？</p>
+						<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
+						<p>2、您胃脘部、背部或腰膝部有冷感吗？</p>
+						<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
+						<p>3、您感到怕冷、衣服比别人穿的多吗？</p>
+						<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
+						<p>1、您手脚发凉吗？</p>
+						<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
+						<p>1、您手脚发凉吗？</p>
+						<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
+						<p>1、您手脚发凉吗？</p>
+						<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
+						<p>1、您手脚发凉吗？</p>
+						<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
+						<p>1、您手脚发凉吗？</p>
+						<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
+						<p>1、您手脚发凉吗？</p>
+						<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
+						<p>1、您手脚发凉吗？</p>
+						<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
+						<p>1、您手脚发凉吗？</p>
+						<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
+						<p>1、您手脚发凉吗？</p>
+						<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
+						<p>1、您手脚发凉吗？</p>
+						<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
+						<p>1、您手脚发凉吗？</p>
+						<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
+						<p>1、您手脚发凉吗？</p>
+						<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
+						<p>1、您手脚发凉吗？</p>
+						<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
+						<p>1、您手脚发凉吗？</p>
+						<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
+						<p>1、您手脚发凉吗？</p>
+						<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
+						<p>1、您手脚发凉吗？</p>
+						<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
+						<p>1、您手脚发凉吗？</p>
+						<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
+					</div>
+					<div class="constitution_content content_wrap" style="display:none">
+						<div class="constitution_title">体质辨识</div>
+						<div class="type">
+							<span>类型</span><select id="con_type"><option>平和质</option></select>
+							<button>自动分析</button>
+						</div>
+						<div class="result">
+							<span>初步辩证结果</span><select><option></option></select>
+						</div>
+						<div class="performance">
+							<span>现症状可能表现</span>
+							<textarea></textarea>
+						</div>
+						<div class="tendency">
+							<span>发病倾向</span>
+							<textarea></textarea>
+						</div>
+						<div class="advice">
+							<span>专家建议</span>
+							<textarea></textarea>
+						</div>
+					</div>
+					<div class="pro_content content_wrap" style="display:none">
+						<div class="pro_title">调养方案</div>
+						<div class="con_type">
+							<span>体质类型</span>
+							<input type="text"/>s
+							<button>初始化</button>
+						</div>
+						<div class="season">
+							<span>季节调养</span>	
+							<textarea></textarea>
+						</div>
+						<div class="diet_advice">
+							<span>饮食建议</span>
+							<textarea></textarea>
+						</div>
+						<div class="exercise">
+							<span>运动养生</span>
+							<textarea></textarea>
+						</div>
+						<div class="drug">
+							<span>药物调养</span>
+							<textarea></textarea>
+						</div>
+						<div class="living">
+							<span>起居调养</span>
+							<textarea></textarea>
+						</div>
+						<div class="spirit">
+							<span>精神修养</span>
+							<textarea></textarea>
+						</div>
+						<div class="plan">
+							<span>食疗方案</span>
+							<textarea></textarea>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div id="footer"></div>

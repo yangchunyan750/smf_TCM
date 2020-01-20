@@ -10,9 +10,11 @@ $(document).ready(function(){
   }).mouseover(function(){
   	  $(this).css('cursor','pointer');
   })
-  //主模块点击改变背景色
+  //主模块点击改变背景色并切换右侧显示
   $('#content li').click(function(){
-	  $('#content li').css({'background-color':'#fff','color':'#000'});
-	  $(this).css({'background-color':'rgb(0,162,232)','color':'#fff'});
+	  $('.content_wrap').css('display','none');
+	  $('#content li').css({'background-color':'rgb(243,243,243)','color':'#000'});
+	  $(this).css({'background-color':'rgb(31,184,205)','color':'#fff'});
+	  $('.'+$(this).attr("class")).css('display','block')
   })
 });
