@@ -26,4 +26,6 @@ $(document).ready(function(){
 	  $('#content-left ul li').css({'background-color':'rgb(243,243,243)','color':'#000'});
 	  $('#content-left ul li').eq(num).css({'background-color':'rgb(31,184,205)','color':'#fff'})
   })
+  //问诊60题点击显示对应的症状
+  
 });
