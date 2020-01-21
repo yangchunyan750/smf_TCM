@@ -26,6 +26,9 @@ $(document).ready(function(){
 	  $('#content-left ul li').css({'background-color':'rgb(243,243,243)','color':'#000'});
 	  $('#content-left ul li').eq(num).css({'background-color':'rgb(31,184,205)','color':'#fff'})
   })
-  //问诊60题点击显示对应的症状
-  
+  //问诊题目只能选择一个
+  $("#content_right .choose label").click(function(){
+	  console.log(123);
+	  $(this).find('input[type=checkbox]').not(this).attr("checked", false);
+  })
 });
