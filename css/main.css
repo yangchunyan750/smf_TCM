@@ -1,7 +1,7 @@
+/* 公共部分 */
 body{
 	height:100%;
 	max-height:100%;
-	overflow:hidden;
 	padding:0px;
 	margin:0px;
 	border:0px;
@@ -13,6 +13,21 @@ li{
 #wrapper{
 	position: relative;
 }
+.next{
+	position:absolute;
+	bottom:1%;
+	right:2%;
+}
+.next button{
+	background-color:rgb(31,184,205);
+	width:80px;
+	height:40px;
+	color:#fff;
+	border-radius:5px;
+	margin-left:10px;
+	font-size:1em;
+}
+
 /* 顶部导航 */
 #header{
 	position:absolute;
@@ -52,29 +67,47 @@ li{
 	left:0px;
 	top:48px;
 	display:flex;
+	overflow-y:auto;
 }
 /* 中间左侧导航部分 */
 #content-left{
 	width:117px;
 	left:0px;
-	height:100%;
 	flex:0;
 }
 #content-left .panel ul>li{
 	width:117px;
-	height:208px;
-	margin-left:-40px;
-	line-height:210px;
 	text-align:center;
 	cursor:pointer;
 	float:left;
 	font-size:1.2em;
 	background-color:rgb(243,243,243);
 }
+@media screen and (max-width: 1920px) {
+    #content-left .panel ul>li{
+        height:208px;
+        margin-left:-40px;
+        line-height:208px;
+    }
+}
+@media screen and (max-width: 1440px){
+    #content-left .panel ul>li{
+        height:163px;
+        margin-left:-40px;
+        line-height:163px;
+    }
+}
 /* 中间右侧内容部分 */
 #content-right{
+	height:832px;
 	margin:15px 5px;
 	flex:1;
+	overflow-y:auto;
+}
+@media screen and (max-width: 1440px){
+    #content-right{
+        height:652px;
+    }
 }
 #content-right .info_title,#content-right .inquiry_title,#content-right .constitution_title,#content-right .pro_title{
 	text-align:center;
@@ -95,15 +128,30 @@ li{
 	width:240px;
 	margin:30px 24px 15px 0;
 }
+/* 右侧基本信息内容部分 */
+#content-right .info_main{
+	border:1px solid rgb(221,221,221);
+	position:relative;
+}
+#content-right .info_main input{
+	width:25%;
+	height:20px;
+	margin-left:39px;
+}
 
 /* 底部 */
 #footer{
-	position:fixed;
-	bottom:0px;
+	position:absolute;
 	width:100%;
-	height:38px;
-	line-height:38px;
+	height:30px;
+	margin-top:47%;
+	line-height:30px;
 	border-top:1px solid rgb(221,221,221);
+}
+@media screen and (max-width: 1440px) {
+    #footer{
+        margin-top:50.5%;
+    }
 }
 /* 登录弹框 */
 #Popup{

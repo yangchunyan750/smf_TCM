@@ -17,4 +17,13 @@ $(document).ready(function(){
 	  $(this).css({'background-color':'rgb(31,184,205)','color':'#fff'});
 	  $('.'+$(this).attr("class")).css('display','block')
   })
+  //点击下一步切换到下个模块界面
+  $("#content-right .next_btn").click(function(){
+	  var page = '.'+$(this).parent().attr("id");
+	  var num = parseInt(page.charAt(page.length-1));
+	  $(page).css('display','none');
+	  $('.page'+(num+1)).css('display','block');
+	  $('#content-left ul li').css({'background-color':'rgb(243,243,243)','color':'#000'});
+	  $('#content-left ul li').eq(num).css({'background-color':'rgb(31,184,205)','color':'#fff'})
+  })
 });
