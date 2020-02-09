@@ -1,0 +1,37 @@
+@charset "utf-8";
+#Searchresult{
+	height:81.2vh;
+	overflow-y:scroll;
+} 
+#Pagination{
+	position:absolute;
+	bottom:40px;
+	left:40%;
+	right:40%;
+} 
+.pagination a {
+    text-decoration: none;
+	border: 1px solid #AAE;
+	color: rgb(31,184,205);
+}
+
+.pagination a, .pagination span {
+    display: inline-block;
+    padding: 0.1em 0.4em;
+    margin-right: 5px;
+	margin-bottom: 5px;
+}
+
+.pagination .current {
+    background: rgb(31,184,205);
+    color: #fff;
+	border: 1px solid #AAE;
+}
+
+.pagination .current.prev, .pagination .current.next{
+	color:#999;
+	border-color:#999;
+	background:#fff;
+}
+
+

@@ -1,21 +1,102 @@
+@charset "utf-8";
 /* 公共部分 */
+*{
+	margin:0;
+	padding:0;
+}
 body{
-	height:100%;
-	max-height:100%;
-	padding:0px;
-	margin:0px;
-	border:0px;
 	font-size:16px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box; /* Firefox */
+	-webkit-box-sizing:border-box; /* Safari */
 }
 li{
 	list-style: none;
 }
-#wrapper{
-	position: relative;
+#symbol{
+	color:red;
+	font-size:1em;
+}
+/* 头部 */
+#header {
+	margin-right: auto;
+	margin-left: auto;
+	width:100%;
+	height: 7.5vh;
+	line-height: 7.5vh;
+	border-bottom:1px solid rgb(221,221,221);
+}
+#header .title{
+	font-size:1.4em;
+	margin-left:50px;
+	color:rgb(60,189,209);
+	float:left;
+}
+#header .info li{
+	float:left;
+	margin-left:5px;
+}
+#header .info{
+	font-size:0.8em;
+	float:right;
+	margin-right:5px;
+}
+#header .info a{
+	color:#666;
+}
+/* 中间部分 */
+#contain {
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}
+#mainbg {
+	float: left;
+	width:100%;
+}
+/* 右侧部分 */
+#content-right{
+	float: right;
+	margin: 2px 0px 2px 0px;
+	width: 91.5%;
+	text-align:left;
+}
+#content-right table{
+	width:100%;
+	border-collapse:collapse;
+}
+#content-right table textarea{
+	overflow-y: scroll;
+	width:90%;
+	resize:none;
+}
+#content-right table td{
+	padding-top:0.5%;
+	padding-bottom:0.5%;
+}
+#content-right .info_content table td{
+	padding-top:1%;
+	padding-bottom:1%;
+}
+#content-right table input{
+	width:82%;
+	height:20px;
+}
+#content-right table select{
+	width:83%;
+	height:24px;
+}
+#content-right .info_title,#content-right .inquiry_title,#content-right .constitution_title,#content-right .pro_title{
+	padding-bottom:1%;
+	text-align:center;
+	font-size:1.5em;
+	color:rgb(60,189,209);
+	border-bottom:1px solid rgb(221,221,221);
 }
 .next{
 	position:absolute;
-	bottom:1%;
+	bottom:45px;
 	right:2%;
 }
 .next button{
@@ -27,158 +108,67 @@ li{
 	margin-left:10px;
 	font-size:1em;
 }
-
-/* 顶部导航 */
-#header{
-	position:absolute;
-	width:100%;
-	border-bottom:1px solid rgb(221,221,221);
+/* 右侧问诊诊断 */
+#content-right .inquiry_content p{
+	margin:0.1vh;
 }
-#header-nav{
-	position:relative;
+#content-right .inquiry_content p label{
+	margin-right:120px;
+} 
+/* 右侧体质辨识 */
+#content-right .constitution_content table>tbody>tr>td:first-child{
+	width:10%;
+	text-align:left;
 }
-#header .title{
-	font-size:1.4em;
-	margin-left:50px;
-	color:rgb(60,189,209);
+#content-right table button{
+	background-color:rgb(31,184,205);
+	width:80px;
+	height:30px;
+	color:#fff;
+	border-radius:5px;
+	margin-left:10px;
+	font-size:1em;
 }
-#header .logo{
-	background: url(../img/logo.png) no-repeat;
-	width:100%;
+#content-right .constitution_content table #xzzknbx{
+	padding-bottom:10%;	
 }
-#header .info{
-	position:absolute;
-	top:-6px;
-	right:10px;
-	font-size:0.8em;
+#content-right .constitution_content table #fbqx{
+	padding-bottom:1%;
 }
-
-#header .info li{
-	float:left;
-	margin-left:5px;
+#content-right .constitution_content table #zjjy{
+	padding-bottom:14%;
 }
-#header .info a{
-	color:#666;
+/* 调养方案 */
+#content-right .pro_content table>tbody>tr>td:first-child{
+	width:10%;
+	text-align:left;
 }
-/* 中间内容部分 */
-#content{
-	width:100%;
-	position: absolute;
-	left:0px;
-	top:48px;
-	display:flex;
-	overflow-y:auto;
+#content-right .pro_content table .tyfa{
+	padding-bottom:2%;
 }
-/* 中间左侧导航部分 */
+/* 左侧部分 */
 #content-left{
-	width:117px;
-	left:0px;
-	flex:0;
+	float: left;
+	margin: 2px 2px 0px 0px;
+	background: #F2F3F7;
+	width: 8.2%;
+	text-align:left;
 }
+
 #content-left .panel ul>li{
-	width:117px;
+	height:21.8vh;
+	line-height:21.8vh;
 	text-align:center;
 	cursor:pointer;
-	float:left;
 	font-size:1.2em;
 	background-color:rgb(243,243,243);
 }
-@media screen and (max-width: 1920px) {
-    #content-left .panel ul>li{
-        height:208px;
-        margin-left:-40px;
-        line-height:208px;
-    }
-}
-@media screen and (max-width: 1440px){
-    #content-left .panel ul>li{
-        height:163px;
-        margin-left:-40px;
-        line-height:163px;
-    }
-}
-/* 中间右侧内容部分 */
-#content-right{
-	height:832px;
-	margin:15px 5px;
-	flex:1;
-	overflow-y:auto;
-}
-@media screen and (max-width: 1440px){
-    #content-right{
-        height:652px;
-    }
-}
-#content-right .info_title,#content-right .inquiry_title,#content-right .constitution_title,#content-right .pro_title{
-	text-align:center;
-	height:40px;
-	line-height:40px;
-	font-size:1.5em;
-	color:rgb(60,189,209);
-	border-bottom:1px solid rgb(221,221,221);
-}
-#content-right .inquiry_content p{
-	padding-left:16px;
-}
-#content-right .doc label,#content-right .date label,#content-right .sm_number label,#content-right .count label,#content-right .personal label{
-	margin-left:10px;
-	padding-right:10px;
-}
-#content-right .doc input,#content-right .date input,#content-right .sm_number input,#content-right .count input,#content-right .personal input{
-	width:240px;
-	margin:30px 24px 15px 0;
-}
-/* 右侧基本信息内容部分 */
-#content-right .info_main{
-	border:1px solid rgb(221,221,221);
-	position:relative;
-}
-#content-right .info_main input{
-	width:25%;
-	height:20px;
-	margin-left:39px;
-}
-
-/* 底部 */
-#footer{
-	position:absolute;
+/* 底部部分 */
+#footer {
+	position:fixed;
 	width:100%;
-	height:30px;
-	margin-top:47%;
-	line-height:30px;
+	height:5vh;
+	bottom:0px;
+	line-height:5vh;
 	border-top:1px solid rgb(221,221,221);
 }
-@media screen and (max-width: 1440px) {
-    #footer{
-        margin-top:50.5%;
-    }
-}
-/* 登录弹框 */
-#Popup{
-	display: none;
-}
-#loginWin{
-	position: absolute;
-	left:50%;
-	top:50%;
-}
-#loginWin .close_button{
-	position: relative;
-	top:-74px;
-	right:-180px;
-	color:#aaa;
-}
-#loginWin .form{
-	width:400px; 
-	position: absolute;
-	left:-180px;
-	top:-160px;
-	background-color:#fff;
-}
-#loginWin .form_content{
-	text-align: center;
-}
-#loginWin p{
-	margin-top:25px;
-}
-

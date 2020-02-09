@@ -21,14 +21,22 @@ $(document).ready(function(){
   $("#content-right .next_btn").click(function(){
 	  var page = '.'+$(this).parent().attr("id");
 	  var num = parseInt(page.charAt(page.length-1));
-	  $(page).css('display','none');
-	  $('.page'+(num+1)).css('display','block');
-	  $('#content-left ul li').css({'background-color':'rgb(243,243,243)','color':'#000'});
-	  $('#content-left ul li').eq(num).css({'background-color':'rgb(31,184,205)','color':'#fff'})
+	  if("" != $("#name").val() || "" != $("#sex").val() || $("#sex").val()){
+		  $('#page'+(num)).css('display','none');
+		  $('#page'+(num+1)).css('display','block');
+		  $('#content-left ul li').css({'background-color':'rgb(243,243,243)','color':'#000'});
+		  $('#content-left ul li').eq(num).css({'background-color':'rgb(31,184,205)','color':'#fff'})
+	  }else{
+		  if("" == $("#name").val().trim()){
+			  alert("请输入姓名")
+		  }
+	  }
+	  
   })
-  //问诊题目只能选择一个
-  $("#content_right .choose label").click(function(){
-	  console.log(123);
-	  $(this).find('input[type=checkbox]').not(this).attr("checked", false);
-  })
+  //追加问诊题目选项
+  var testCheckBox = 0;
+  $('#hiddenresult  .inquiry').each(function(){
+	testCheckBox++;  
+    $(this).after("<p id='choose'><label><input type='radio' name="+testCheckBox+"/>无</label><label><input type='radio' name="+testCheckBox+"/>很少</label><label><input type='radio' name="+testCheckBox+"/>有时</label><label><input type='radio' name="+testCheckBox+"/>经常</label><label><input type='radio' name="+testCheckBox+"/>总是</label></p>") 
+  });
 });

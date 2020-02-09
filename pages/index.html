@@ -4,8 +4,31 @@
 		<meta charset="utf-8">
 		<title>圣美孚中医综合诊断系统</title>
 		<link rel="stylesheet" href="../css/main.css"></link>
+		<link rel="stylesheet" href="../css/page.css"></link>
 		<script type="text/javascript" src="../js/jQuery.js"></script>
+		<script type="text/javascript" src="../js/page.js"></script>
+		<script type="text/javascript" src="../js/nation.js"></script>
 		<script type="text/javascript" src="../js/main.js"></script>
+		<script type="text/javascript">
+		$(function(){
+			var initPagination = function() {
+				var num_entries = $("#hiddenresult div.result").length;
+				$("#Pagination").pagination(num_entries, {
+					num_edge_entries: 1, //边缘页数
+					num_display_entries: 4, //主体页数
+					callback: pageselectCallback,
+					items_per_page:1 //每页显示1项
+				});
+			 }();
+			 
+			function pageselectCallback(page_index, jq){
+				var new_content = $("#hiddenresult div.result:eq("+page_index+")").clone();
+				$("#Searchresult").empty().append(new_content); //装载对应分页的内容
+				return false;
+			}
+		});
+		</script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	</head>
 	<body>
 		<div id="wrapper">
@@ -21,379 +44,461 @@
 				</div>
 			</div>
 			<div id="content">
-				<div id="content-left">
-					<div class="panel">
-						<ul>
-							<li class="info_content" style="background-color:rgb(31,184,205);color:#fff">基本信息</li>
-							<li class="inquiry_content">问诊诊断</li>
-							<li class="constitution_content">体质辨识</li>
-							<li class="pro_content">调养方案</li>
-						</ul>
-					</div>
-				</div>
-				<div id="content-right">
-					<div class="info_content content_wrap page1">
-						<div class="info_title">基本信息</div>
-						<div class="info_main">
-							<div class="doc">
-								<label for="docNum">医生编号</label><input type="textbox" id="docNum"/>
-								<label for="docNum">医生姓名</label><input type="textbox" id="docNum"/>
-								<label for="docNum">科室</label><input type="textbox" id="docNum"/>
-							</div>
-							<div class="date">	
-								<label for="date_time">体检日期</label><input type="textbox" id="date_time"/>
-								<span class="sm_number">
-									<label for="s_num">流水号</label><input type="textbox" id="s_num"/>
-									<label for="m_num">病历号</label><input type="textbox" id="m_num"/>
-								</span>
-							</div>
-
-							<div class="count">
-								<label for="count_num">检测次数</label><input type="textbox" id="count_num"/>
-							</div>
-							<div class="personal">
-								<label for="name">姓&nbsp;&nbsp;&nbsp;&nbsp;名</label><input type="textbox" id="name"/>
-								<label for="sex">性&nbsp;&nbsp;&nbsp;&nbsp;别</label><input type="textbox" id="sex"/>
-								<label for="IDNum">身份证号</label><input type="textbox" id="IDNum"/>
-								<label for="birthDate">出生日期</label><input type="textbox" id="birthDate"/>
-								<label for="age">年龄</label><input type="textbox" id="age"/>
-								<label for="status">婚姻状况</label><input type="textbox" id="status"/>
-								<label for="height">身&nbsp;&nbsp;&nbsp;&nbsp;高</label><input type="textbox" id="height"/>
-								<label for="weight">体&nbsp;&nbsp;&nbsp;&nbsp;重</label><input type="textbox" id="weight"/></br>
-								<label for="p_blood">血&nbsp;&nbsp;&nbsp;&nbsp;压</label><input type="textbox" id="p_blood"/>
-								<label for="s_blood">血&nbsp;&nbsp;&nbsp;&nbsp;糖</label><input type="textbox" id="s_blood"/></br>
-								<label for="t_blood">血&nbsp;&nbsp;&nbsp;&nbsp;型</label><input type="textbox" id="t_blood"/>
-								<label for="nation">民&nbsp;&nbsp;&nbsp;&nbsp;族</label><input type="textbox" id="nation"/>
-								<label for="occupation">职&nbsp;&nbsp;&nbsp;&nbsp;业</label><input type="textbox" id="occupation"/>
-								<label for="work_unit">工作单位</label><input type="textbox" id="work_unit"/></br>
-								<label for="address">地址</label><input type="textbox" id="address"/></br>
-								<label for="phone">联系电话</label><input type="textbox" id="phone"/>
-								<label for="email">邮箱</label><input type="textbox" id="email"/>
-							</div>
-							<p class="next" id="page1">
-								<button class="next_btn">下一步</button>
-								<button class="save">保存</button>
-							</p>
+				<div id="mainbg">
+					<div id="content-left">	
+						<div class="panel">
+							<ul>
+								<li class="info_content" style="background-color:rgb(31,184,205);color:#fff">基本信息</li>
+								<li class="inquiry_content">问诊诊断</li>
+								<li class="constitution_content">体质辨识</li>
+								<li class="pro_content">调养方案</li>
+							</ul>
 						</div>
 					</div>
-					<div class="inquiry_content content_wrap page2" style="display:none">
-						<div class="inquiry_title">问诊诊断</div>
-						<div>
-							<p>1、您手脚发凉吗？</p>
-							<p class="choose">
-								<label><input type="checkbox"/>无</label>
-								<label><input type="checkbox"/>很少</label>
-								<label><input type="checkbox"/>有时</label>
-								<label><input type="checkbox"/>经常</label>
-								<label><input type="checkbox"/>总是</label>
-							</p>
-							<p>2、您胃脘部、背部或腰膝部有冷感吗？</p>
-							<p class="choose">
-								<input type="checkbox"/>无 
-								<input type="checkbox"/>很少
-								<input type="checkbox"/>有时
-								<input type="checkbox"/>经常
-								<input type="checkbox"/>总是
-							</p>
-							<p>3、您感到怕冷、衣服比别人穿的多吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>4、您比一般人耐受不了寒冷吗？（冬天的寒冷、夏天的冷空调、电扇等。）</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>5、您比别人更容易患感冒吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>6、您吃（喝）凉的东西会感到不舒服或者怕吃（喝）凉东西吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>7、您受凉或吃（喝）凉的东西后，容易腹泻（拉肚子）吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>8、您感到手脚心发热吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>9、您感觉身体、脸上发热吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>10、您皮肤或口唇干燥吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>11、您口唇的颜色比一般人红吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>12、您容易便秘或大便干燥吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>13、您面部两颧潮红或偏红吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>14、您感到眼睛干涩吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>15、您活动量稍大就容易出虚汗吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>16、您容易疲乏吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>17、您容易气短（呼吸短促，接不上气）吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>18、您容易心慌吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>19、您容易头晕或站起时晕眩吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>20、您喜欢安静、懒得说话吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>21、您说话声音无力吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>22、您感到胸闷或腹部胀满吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>23、您感到身体不轻松或不爽快吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>24、您腹部肥满松软吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>25、您有额部油脂分泌过多的现象吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>26、您上眼睑比别人肿（仍轻微隆起的现象）吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>27、您嘴里有粘粘的感觉吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>28、您平时痰多，特别是咽喉部总感到有痰堵着吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>29、您舌苔厚腻或有舌苔厚厚地感觉吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>30、您的皮肤在不知不觉中会出现青紫瘀斑（皮下出血）吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>31、您两颧部有细微红丝吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>32、您身体上有哪里疼痛吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>33、您面色晦暗或容易出现褐斑吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>34、您容易有黑眼圈吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>35、您容易忘事（健忘）吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>36、您口唇颜色偏黯吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>37、您没有感冒时也会打喷嚏吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>38、您没有感冒时也会鼻塞、流鼻涕吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>39、您有因季节变化、温度变化或异味等原因而哮喘的现象吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>40、您容易过敏（对药物、失误、气味、花粉或在季节交替、气候变化时）吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>41、您的皮肤容易起荨麻疹（风团、风疹块、风疙瘩）吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>42、您会因过敏出现紫癜（紫红色瘀点、瘀斑）吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>43、您的皮肤一抓就红、并出现抓痕吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>44、您精力充沛吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>45、您感到闷闷不乐吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>46、您能适应外界自然和社会环境的变化吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>47、您容易失眠吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>48、您容易精神紧张、焦虑不安吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>49、您多愁善感、感情脆弱吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>50、您容易感到害怕或受到惊吓吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>51、您胁肌部或乳房胀痛吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>52、您无缘无故叹气吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>53、您咽喉部有异物感、且吐之不出、眼之不下吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>54、您面部或鼻部有油腻感或者油亮发光吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>55、您容易生痤疮吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>56、您感到口苦或嘴里有异味吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>57、您大便黏滞不爽、有解不尽的感觉吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>58、您小便时尿道有发热感、尿色浓（深）吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>59、您的阴囊部位潮湿吗？</p>
-							<p><input type="checkbox"/>无 <input type="checkbox"/>很少<input type="checkbox"/>有时<input type="checkbox"/>经常<input type="checkbox"/>总是</p>
-							<p>60、当前临床症状表现</p>
-							<p class="yxsr"><input type="checkbox" id="yxsr"/><label for="yxsr">腰膝酸软</label></p>
-							<p class="wtwz"><input type="checkbox"/><label for="">胃痛、胃胀</label></p>
-							<p class="ajx"><input type="checkbox"/>胆怯、惊悸、胁肌胀痛</p>
-							<p class="xbcszt"><input type="checkbox"/>小便赤涩灼痛</p>
-							<p class="fd"><input type="checkbox"/>腹痛、大便秘结</p>
-							<p class="xz"><input type="checkbox"/>小便频急，灼涩疼痛</p>
-							<p class="xxt"><input type="checkbox"/>心悸、心胸憋闷或疼痛</p>
-							<p class="kq"><input type="checkbox"/>咳嗽、气喘</p>
-							<p class="sfb"><input type="checkbox"/>食少，腹胀、便溏</p>
-							<p class="xx"><input type="checkbox"/>眩晕、肋痛</p>
-							<p class="none"><input type="checkbox"/>无上述症状（无符合项）</p>
-							
-							<p style="display:none" class="zzbx">61、当前临床症状表现</p>
-							<div class="yxsr" style="display:none">
-								<p ><input type="checkbox"/>畏寒肢冷，夜尿多</p>
-								<p ><input type="checkbox"/>头晕耳鸣，潮热盗汗</p>
-								<p class="yxsr"><input type="checkbox"/>下肢水肿，畏寒肢冷</p>
-								<p class="yxsr"><input type="checkbox"/>心烦，失眠</p>
-								<p class="yxsr"><input type="checkbox"/>久病咳喘，呼多吸少</p>
-								<p class="yxsr"><input type="checkbox"/>心悸，水肿</p>
-								<p class="yxsr"><input type="checkbox"/>久泻久痢，水肿，腰腹冷痛</p>
-								<p class="yxsr"><input type="checkbox"/>干咳，少痰，盗汗</p>
-								<p class="yxsr"><input type="checkbox"/>眩晕，耳鸣，肋痛</p>
-							</div>
-							<div class="wtwz" style="display:none">
-								<p class="wtwz"><input type="checkbox"/>隐痛，喜按，食少</p>
-								<p class="wtwz"><input type="checkbox"/>冷痛，喜热食，畏寒肢冷</p>
-								<p class="wtwz"><input type="checkbox"/>隐隐灼痛，胃脘嘈杂，口燥咽干</p>
-								<p class="wtwz"><input type="checkbox"/>灼痛，喜冷饮，口臭，牙痛，便秘</p>
-								<p class="wtwz"><input type="checkbox"/>胃中有振水声，呕吐清水</p>
-								<p class="wtwz"><input type="checkbox"/>冷痛，恶心呕吐，遇寒加剧</p>
-								<p class="wtwz"><input type="checkbox"/>厌食，呕吐酸馊食物，大便酸腐臭秽</p>
-								<p class="wtwz"><input type="checkbox"/>脘腹胀痛走窜，嗳气，肠鸣，矢气</p>
-								<p class="wtwz"><input type="checkbox"/>胁肋胀痛，情志抑郁</p>
-							</div>
-							<div class="ajx" style="display:none">
-								<p><input type="checkbox"/>胁下有痞块，口干口苦，纳呆，大便不调</p>
-								<p><input type="checkbox"/>失眠，眩晕，呕恶</p>
-							</div>
-							<div class="xbcszt" style="display:none">
-								<p><input type="checkbox"/>心烦，失眠，口渴</p>
-							</div>
-							<div class="fd" style="display:none">
-								<p><input type="checkbox"/>腹满硬痛，拒按</p>
-								<p><input type="checkbox"/>大便艰涩难下，数日一行，腹胀，口干</p>
-							</div>
-							<div class="xz" style="display:none">
-								<p><input type="checkbox"/>小腹胀痛、腰痛</p>
-							</div>
-							<div class="xxt" style="display:none">
-								<p><input type="checkbox"/>神疲、气短</p>
-								<p><input type="checkbox"/>畏寒肢冷</p>
-								<p><input type="checkbox"/>头晕眼花，失眠</p>
-								<p><input type="checkbox"/>心烦，口燥咽干，或手足心热，盗汗</p>
-								<p><input type="checkbox"/>刺痛，或痛引肩背</p>
-								<p><input type="checkbox"/>口舌生，小便短赤</p>
-								<p><input type="checkbox"/>心烦失眠，腰膝酸软</p>
-								<p><input type="checkbox"/>神疲，头晕，食少，腹胀</p>
-								<p><input type="checkbox"/>多梦健忘，眩晕，视物模糊，肢体麻木</p>
-								<p><input type="checkbox"/>胸闷气喘，水肿，腰膝酸软</p>
-								<p><input type="checkbox"/>咳嗽，气短而喘</p>
-							</div>
-							<div class="kq" style="display:none">
-								<p><input type="checkbox"/>咳嗽无力，气短，白汗</p>
-								<p><input type="checkbox"/>干咳，痰少，潮热，盗汗</p>
-								<p><input type="checkbox"/>鼻塞，流涕，恶寒</p>
-								<p><input type="checkbox"/>痰多，色白，胸闷</p>
-								<p><input type="checkbox"/>鼻塞，流浊涕，咽痛，发热恶寒</p>
-								<p><input type="checkbox"/>发热，气粗而喘，大便秘结</p>
-								<p><input type="checkbox"/>发热，痰多黄稠</p>
-								<p><input type="checkbox"/>干咳痰少，口鼻干燥</p>
-								<p><input type="checkbox"/>头面浮肿，发热恶寒</p>
-								<p><input type="checkbox"/>气短而喘，心悸</p>
-								<p><input type="checkbox"/>咯痰，食少，腹胀，便溏</p>
-								<p><input type="checkbox"/>呼多吸少，动则尤甚，腰膝酸软</p>
-								<p><input type="checkbox"/>干咳，少痰，腰膝酸软，潮热盗汗</p>
-							</div>
-							<div class="sfb" style="display:none">
-								<p><input type="checkbox"/>神疲，乏力，少气懒言</p>
-								<p><input type="checkbox"/>畏寒怕冷，脘腹喜温喜按</p>
-								<p><input type="checkbox"/>脘腹重坠，气短懒言</p>
-								<p><input type="checkbox"/>各种慢性出血，神疲乏力</p>
-								<p><input type="checkbox"/>发热，肢体困重，便溏不爽</p>
-								<p><input type="checkbox"/>头身困重，口不渴</p>
-								<p><input type="checkbox"/>心悸，头晕</p>
-								<p><input type="checkbox"/>久泻久痢，水肿，腰腹冷痛</p>
-								<p><input type="checkbox"/>神疲，乏力，头身困重</p>
-							</div>
-							<div class="xx" style="display:none">
-								<p><input type="checkbox"/>视力减退，肢体麻木，月经量少</p>
-								<p><input type="checkbox"/>两目干涩，五心烦热，盗汗</p>
-								<p><input type="checkbox"/>情志抑郁，善太息，咽部异物感</p>
-								<p><input type="checkbox"/>面红目赤，口苦，急躁易怒</p>
-								<p><input type="checkbox"/>耳鸣，头痛，腰膝酸软</p>
-								<p><input type="checkbox"/>手足振颤，麻木，爪甲不容</p>
-								<p><input type="checkbox"/>急躁易怒，咳嗽痰黄，胸痛</p>
-								<p><input type="checkbox"/>嗳气，吞酸，胃痛</p>
-								<p><input type="checkbox"/>腹胀，便溏</p>
-								<p><input type="checkbox"/>心悸，多梦</p>
-							</div>
-							<div class="none" style="display:none">
-								<p><input type="checkbox"/>无</p>
-							</div>
-							<p class="next" id="page2">
-								<button class="next_btn">下一步</button>
-								<button class="save">保存</button>
-							</p>
-							
-						</div>
-						<div style="display:none">
-							
-						</div>
-					</div>
-					<div class="constitution_content content_wrap page3" style="display:none">
-						<div class="constitution_title">体质辨识</div>
-						<div class="type">
-							<span>类型</span><select id="con_type"><option>平和质</option></select>
-							<button>自动分析</button>
-						</div>
-						<div class="result">
-							<span>初步辩证结果</span><select><option></option></select>
-						</div>
-						<div class="performance">
-							<span>现症状可能表现</span>
-							<textarea></textarea>
-						</div>
-						<div class="tendency">
-							<span>发病倾向</span>
-							<textarea></textarea>
-						</div>
-						<div class="advice">
-							<span>专家建议</span>
-							<textarea></textarea>
-						</div>
-						<p class="next" id="page3">
+					<div id="content-right">
+					<div class="info_content content_wrap page1" id="page1">
+						<table>
+							<thead class="info_title"><tr><td colspan="6">基本信息</td></tr></thead>
+							<tbody>
+								<tr>
+									<td><label for="docNum">医生编号</label></td>
+									<td><input type="textbox" id="docNum"/></td>
+									<td><label for="docName">医生姓名</label></td>
+									<td><input type="textbox" id="docName"/></td>
+									<td><label for="docDepart">科室</label></td>
+									<td><input type="textbox" id="docDepart"/></td>
+								</tr>
+								<tr>
+									<td><label for="date_time">体检日期</label></td>
+									<td><input type="textbox" id="date_time"/></td>
+									<td><label for="s_num">流水号</label></td>
+									<td><input type="textbox" id="s_num"/></td>
+									<td><label for="m_num">病历号</label></td>
+									<td><input type="textbox" id="m_num"/></td>
+								</tr>
+								<tr>
+									<td><label for="count_num">检测次数</label></td>
+									<td><input type="textbox" id="count_num"/></td>
+								</tr>
+								<tr>
+									<td><label for="name">姓名</label></td>
+									<td><input type="textbox" id="name"/><span id="symbol">*</span></td>
+									<td><label for="sex">性别</label></td>
+									<td>
+										<select id="sex"/>
+											<option>男</option>
+											<option>女</option>	
+										</select>
+										<span id="symbol">*</span>
+										</td>
+									<td><label for="IDNum">身份证号</label></td>
+									<td><input type="textbox" id="IDNum"/></td>
+								</tr>
+								<tr>
+									<td><label for="birthDate">出生日期</label></td>
+									<td><input type="textbox" id="birthDate"/><span id="symbol">*</span></td>
+									<td><label for="age">年龄</label></td>
+									<td><input type="textbox" id="age"/><span id="symbol">*</span></td>
+									<td><label for="status">婚姻状况</label></td>
+									<td>
+										<select id="status"/>
+											<option>未婚</option>
+											<option>已婚</option>	
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td><label for="height">身高</label></td>
+									<td><input type="textbox" id="height"/><span>cm</span></td>
+									<td><label for="weight">体重</label></td>
+									<td><input type="textbox" id="weight"/><span>kg</span></td>
+								</tr>
+								<tr>
+									<td><label for="p_blood">血压</label></td>
+									<td>
+										<input type="textbox" id="p_blood"/>
+										<!-- <span>/</span> -->
+										<!-- <input type="textbox" id="p_blood" style="width:30%"/> -->
+										<span>mmHg</span>
+									</td>
+									<td></td>
+									<td></td>
+									<td><label for="s_blood">血糖</label></td>
+									<td><input type="textbox" id="s_blood"/><span>mmol/L</span></td>
+								</tr>
+								<tr>
+									<td><label for="t_blood">血型</label></td>
+									<td><select id="blood"/>
+											<option>A</option>
+											<option>B</option>
+											<option>AB</option>
+											<option>O</option>
+											<option>其他</option>
+										</select></td>
+									<td><label for="nation">民族</label></td>
+									<td><select type="textbox" id="nation"></select></td>
+									<td><label for="occupation">职业</label></td>
+									<td>
+										<select type="textbox" id="occupation"/>
+											<option>专业型</option>
+											<option>技能型</option>
+											<option></option>
+											<option></option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td><label for="work_unit">工作单位</label></td>
+									<td colspan="5"><input type="textbox" id="work_unit"/></td>
+								</tr>
+								<tr>
+									<td><label for="address">地址</label></td>
+									<td colspan="5"><input type="textbox" id="address"/></td>
+								</tr>
+								<tr>
+									<td><label for="phone">联系电话</label></td>
+									<td><input type="textbox" id="phone"/></td>
+									<td><label for="email">邮箱</label></td>
+									<td><input type="textbox" id="email"/></td>
+								</tr>
+							</tbody>
+						</table>	
+						<p class="next" id="next_page1">
 							<button class="next_btn">下一步</button>
 							<button class="save">保存</button>
 						</p>
 					</div>
-					<div class="pro_content content_wrap page4" style="display:none">
-						<div class="pro_title">调养方案</div>
-						<div class="con_type">
-							<span>体质类型</span>
-							<input type="text"/>s
-							<button>初始化</button>
+					<div class="inquiry_content content_wrap page2" id="page2" style="display:none">
+						<table>
+							<thead class="info_title"><tr><td colspan="6">问诊诊断</td></tr></thead>
+							</thead>
+						</table>
+						<div id="Pagination" class="pagination"><!-- 这里显示分页 --></div>
+						<div id="Searchresult">分页初始化完成后这里的内容会被替换。</div>
+						<div id="hiddenresult" style="display:none;">
+							<div class="result">
+								<p class="inquiry">1、您手脚发凉吗？</p>
+
+								<p class="inquiry">2、您胃脘部、背部或腰膝部有冷感吗？</p>
+								<p class="inquiry">3、您感到怕冷、衣服比别人穿的多吗？</p>
+								
+								<p class="inquiry">4、您比一般人耐受不了寒冷吗？（冬天的寒冷、夏天的冷空调、电扇等。）</p>
+
+								<p class="inquiry">5、您比别人更容易患感冒吗？</p>
+
+								<p class="inquiry">6、您吃（喝）凉的东西会感到不舒服或者怕吃（喝）凉东西吗？</p>
+
+								<p class="inquiry">7、您受凉或吃（喝）凉的东西后，容易腹泻（拉肚子）吗？</p>
+
+								<p class="inquiry">8、您感到手脚心发热吗？</p>
+
+								<p class="inquiry">9、您感觉身体、脸上发热吗？</p>
+
+								<p class="inquiry">10、您皮肤或口唇干燥吗？</p>
+
+								<p class="inquiry">11、您口唇的颜色比一般人红吗？</p>
+
+								<p class="inquiry">12、您容易便秘或大便干燥吗？</p>
+						
+							</div>
+							<div class="result">
+								<p class="inquiry">13、您面部两颧潮红或偏红吗？</p>
+								<p class="inquiry">14、您感到眼睛干涩吗？</p>
+								
+								<p class="inquiry">15、您活动量稍大就容易出虚汗吗？</p>
+								
+								<p class="inquiry">16、您容易疲乏吗？</p>
+								
+								<p class="inquiry">17、您容易气短（呼吸短促，接不上气）吗？</p>
+								
+								<p class="inquiry">18、您容易心慌吗？</p>
+								
+								<p class="inquiry">19、您容易头晕或站起时晕眩吗？</p>
+								
+								<p class="inquiry">20、您喜欢安静、懒得说话吗？</p>
+								
+								<p class="inquiry">21、您说话声音无力吗？</p>
+								
+								<p class="inquiry">22、您感到胸闷或腹部胀满吗？</p>
+								
+								<p class="inquiry">23、您感到身体不轻松或不爽快吗？</p>
+								
+								<p class="inquiry">24、您腹部肥满松软吗？</p>
+							
+							</div>
+							<div class="result">
+								<p class="inquiry">25、您有额部油脂分泌过多的现象吗？</p>
+								
+								<p class="inquiry">26、您上眼睑比别人肿（仍轻微隆起的现象）吗？</p>
+								
+								<p class="inquiry">27、您嘴里有粘粘的感觉吗？</p>
+								
+								<p class="inquiry">28、您平时痰多，特别是咽喉部总感到有痰堵着吗？</p>
+								
+								<p class="inquiry">29、您舌苔厚腻或有舌苔厚厚地感觉吗？</p>
+								
+								<p class="inquiry">30、您的皮肤在不知不觉中会出现青紫瘀斑（皮下出血）吗？</p>
+								
+								<p class="inquiry">31、您两颧部有细微红丝吗？</p>
+								
+								<p class="inquiry">32、您身体上有哪里疼痛吗？</p>
+								
+								<p class="inquiry">33、您面色晦暗或容易出现褐斑吗？</p>
+								
+								<p class="inquiry">34、您容易有黑眼圈吗？</p>
+								
+								<p class="inquiry">35、您容易忘事（健忘）吗？</p>
+								
+								<p class="inquiry">36、您口唇颜色偏黯吗？</p>
+							
+							</div>
+							<div class="result">
+								<p class="inquiry">37、您没有感冒时也会打喷嚏吗？</p>
+								
+								<p class="inquiry">38、您没有感冒时也会鼻塞、流鼻涕吗？</p>
+								
+								<p class="inquiry">39、您有因季节变化、温度变化或异味等原因而哮喘的现象吗？</p>
+								
+								<p class="inquiry">40、您容易过敏（对药物、失误、气味、花粉或在季节交替、气候变化时）吗？</p>
+								
+								<p class="inquiry">41、您的皮肤容易起荨麻疹（风团、风疹块、风疙瘩）吗？</p>
+								
+								<p class="inquiry">42、您会因过敏出现紫癜（紫红色瘀点、瘀斑）吗？</p>
+								
+								<p class="inquiry">43、您的皮肤一抓就红、并出现抓痕吗？</p>
+								
+								<p class="inquiry">44、您精力充沛吗？</p>
+								
+								<p class="inquiry">45、您感到闷闷不乐吗？</p>
+								
+								<p class="inquiry">46、您能适应外界自然和社会环境的变化吗？</p>
+								
+								<p class="inquiry">47、您容易失眠吗？</p>
+								
+								<p class="inquiry">48、您容易精神紧张、焦虑不安吗？</p>
+							
+							</div>
+							<div class="result">
+								<p class="inquiry">49、您多愁善感、感情脆弱吗？</p>
+								
+								<p class="inquiry">50、您容易感到害怕或受到惊吓吗？</p>
+								
+								<p class="inquiry">51、您胁肌部或乳房胀痛吗？</p>
+								
+								<p class="inquiry">52、您无缘无故叹气吗？</p>
+								
+								<p class="inquiry">53、您咽喉部有异物感、且吐之不出、眼之不下吗？</p>
+								
+								<p class="inquiry">54、您面部或鼻部有油腻感或者油亮发光吗？</p>
+								
+								<p class="inquiry">55、您容易生痤疮吗？</p>
+								
+								<p class="inquiry">56、您感到口苦或嘴里有异味吗？</p>
+								
+								<p class="inquiry">57、您大便黏滞不爽、有解不尽的感觉吗？</p>
+								
+								<p class="inquiry">58、您小便时尿道有发热感、尿色浓（深）吗？</p>
+								
+								<p class="inquiry">59、您的阴囊部位潮湿吗？</p>
+							
+							</div>
+							<div class="result">
+								<p>60、当前临床症状表现</p>
+								<p class="yxsr"><input type="checkbox" id="yxsr"/><label for="yxsr">腰膝酸软</label></p>
+								<p class="wtwz"><input type="checkbox"/><label for="">胃痛、胃胀</label></p>
+								<p class="ajx"><input type="checkbox"/>胆怯、惊悸、胁肌胀痛</p>
+								<p class="xbcszt"><input type="checkbox"/>小便赤涩灼痛</p>
+								<p class="fd"><input type="checkbox"/>腹痛、大便秘结</p>
+								<p class="xz"><input type="checkbox"/>小便频急，灼涩疼痛</p>
+								<p class="xxt"><input type="checkbox"/>心悸、心胸憋闷或疼痛</p>
+								<p class="kq"><input type="checkbox"/>咳嗽、气喘</p>
+								<p class="sfb"><input type="checkbox"/>食少，腹胀、便溏</p>
+								<p class="xx"><input type="checkbox"/>眩晕、肋痛</p>
+								<p class="none"><input type="checkbox"/>无上述症状（无符合项）</p>
+								
+								<p style="display:none" class="zzbx">61、当前临床症状表现</p>
+								<div class="yxsr" style="display:none">
+									<p ><input type="checkbox"/>畏寒肢冷，夜尿多</p>
+									<p ><input type="checkbox"/>头晕耳鸣，潮热盗汗</p>
+									<p class="yxsr"><input type="checkbox"/>下肢水肿，畏寒肢冷</p>
+									<p class="yxsr"><input type="checkbox"/>心烦，失眠</p>
+									<p class="yxsr"><input type="checkbox"/>久病咳喘，呼多吸少</p>
+									<p class="yxsr"><input type="checkbox"/>心悸，水肿</p>
+									<p class="yxsr"><input type="checkbox"/>久泻久痢，水肿，腰腹冷痛</p>
+									<p class="yxsr"><input type="checkbox"/>干咳，少痰，盗汗</p>
+									<p class="yxsr"><input type="checkbox"/>眩晕，耳鸣，肋痛</p>
+								</div>
+								<div class="wtwz" style="display:none">
+									<p class="wtwz"><input type="checkbox"/>隐痛，喜按，食少</p>
+									<p class="wtwz"><input type="checkbox"/>冷痛，喜热食，畏寒肢冷</p>
+									<p class="wtwz"><input type="checkbox"/>隐隐灼痛，胃脘嘈杂，口燥咽干</p>
+									<p class="wtwz"><input type="checkbox"/>灼痛，喜冷饮，口臭，牙痛，便秘</p>
+									<p class="wtwz"><input type="checkbox"/>胃中有振水声，呕吐清水</p>
+									<p class="wtwz"><input type="checkbox"/>冷痛，恶心呕吐，遇寒加剧</p>
+									<p class="wtwz"><input type="checkbox"/>厌食，呕吐酸馊食物，大便酸腐臭秽</p>
+									<p class="wtwz"><input type="checkbox"/>脘腹胀痛走窜，嗳气，肠鸣，矢气</p>
+									<p class="wtwz"><input type="checkbox"/>胁肋胀痛，情志抑郁</p>
+								</div>
+								<div class="ajx" style="display:none">
+									<p><input type="checkbox"/>胁下有痞块，口干口苦，纳呆，大便不调</p>
+									<p><input type="checkbox"/>失眠，眩晕，呕恶</p>
+								</div>
+								<div class="xbcszt" style="display:none">
+									<p><input type="checkbox"/>心烦，失眠，口渴</p>
+								</div>
+								<div class="fd" style="display:none">
+									<p><input type="checkbox"/>腹满硬痛，拒按</p>
+									<p><input type="checkbox"/>大便艰涩难下，数日一行，腹胀，口干</p>
+								</div>
+								<div class="xz" style="display:none">
+									<p><input type="checkbox"/>小腹胀痛、腰痛</p>
+								</div>
+								<div class="xxt" style="display:none">
+									<p><input type="checkbox"/>神疲、气短</p>
+									<p><input type="checkbox"/>畏寒肢冷</p>
+									<p><input type="checkbox"/>头晕眼花，失眠</p>
+									<p><input type="checkbox"/>心烦，口燥咽干，或手足心热，盗汗</p>
+									<p><input type="checkbox"/>刺痛，或痛引肩背</p>
+									<p><input type="checkbox"/>口舌生，小便短赤</p>
+									<p><input type="checkbox"/>心烦失眠，腰膝酸软</p>
+									<p><input type="checkbox"/>神疲，头晕，食少，腹胀</p>
+									<p><input type="checkbox"/>多梦健忘，眩晕，视物模糊，肢体麻木</p>
+									<p><input type="checkbox"/>胸闷气喘，水肿，腰膝酸软</p>
+									<p><input type="checkbox"/>咳嗽，气短而喘</p>
+								</div>
+								<div class="kq" style="display:none">
+									<p><input type="checkbox"/>咳嗽无力，气短，白汗</p>
+									<p><input type="checkbox"/>干咳，痰少，潮热，盗汗</p>
+									<p><input type="checkbox"/>鼻塞，流涕，恶寒</p>
+									<p><input type="checkbox"/>痰多，色白，胸闷</p>
+									<p><input type="checkbox"/>鼻塞，流浊涕，咽痛，发热恶寒</p>
+									<p><input type="checkbox"/>发热，气粗而喘，大便秘结</p>
+									<p><input type="checkbox"/>发热，痰多黄稠</p>
+									<p><input type="checkbox"/>干咳痰少，口鼻干燥</p>
+									<p><input type="checkbox"/>头面浮肿，发热恶寒</p>
+									<p><input type="checkbox"/>气短而喘，心悸</p>
+									<p><input type="checkbox"/>咯痰，食少，腹胀，便溏</p>
+									<p><input type="checkbox"/>呼多吸少，动则尤甚，腰膝酸软</p>
+									<p><input type="checkbox"/>干咳，少痰，腰膝酸软，潮热盗汗</p>
+								</div>
+								<div class="sfb" style="display:none">
+									<p><input type="checkbox"/>神疲，乏力，少气懒言</p>
+									<p><input type="checkbox"/>畏寒怕冷，脘腹喜温喜按</p>
+									<p><input type="checkbox"/>脘腹重坠，气短懒言</p>
+									<p><input type="checkbox"/>各种慢性出血，神疲乏力</p>
+									<p><input type="checkbox"/>发热，肢体困重，便溏不爽</p>
+									<p><input type="checkbox"/>头身困重，口不渴</p>
+									<p><input type="checkbox"/>心悸，头晕</p>
+									<p><input type="checkbox"/>久泻久痢，水肿，腰腹冷痛</p>
+									<p><input type="checkbox"/>神疲，乏力，头身困重</p>
+								</div>
+								<div class="xx" style="display:none">
+									<p><input type="checkbox"/>视力减退，肢体麻木，月经量少</p>
+									<p><input type="checkbox"/>两目干涩，五心烦热，盗汗</p>
+									<p><input type="checkbox"/>情志抑郁，善太息，咽部异物感</p>
+									<p><input type="checkbox"/>面红目赤，口苦，急躁易怒</p>
+									<p><input type="checkbox"/>耳鸣，头痛，腰膝酸软</p>
+									<p><input type="checkbox"/>手足振颤，麻木，爪甲不容</p>
+									<p><input type="checkbox"/>急躁易怒，咳嗽痰黄，胸痛</p>
+									<p><input type="checkbox"/>嗳气，吞酸，胃痛</p>
+									<p><input type="checkbox"/>腹胀，便溏</p>
+									<p><input type="checkbox"/>心悸，多梦</p>
+								</div>
+								<div class="none" style="display:none">
+									<p><input type="checkbox"/>无</p>
+								</div>
+							</div>
 						</div>
-						<div class="season">
-							<span>季节调养</span>	
-							<textarea></textarea>
-						</div>
-						<div class="diet_advice">
-							<span>饮食建议</span>
-							<textarea></textarea>
-						</div>
-						<div class="exercise">
-							<span>运动养生</span>
-							<textarea></textarea>
-						</div>
-						<div class="drug">
-							<span>药物调养</span>
-							<textarea></textarea>
-						</div>
-						<div class="living">
-							<span>起居调养</span>
-							<textarea></textarea>
-						</div>
-						<div class="spirit">
-							<span>精神修养</span>
-							<textarea></textarea>
-						</div>
-						<div class="plan">
-							<span>食疗方案</span>
-							<textarea></textarea>
-						</div>
-						<p class="next" id="page4">
+						<p class="next" id="next_page2">
+							<button class="next_btn">下一步</button>
+							<button class="save">保存</button>
+						</p>
+					</div>
+					<div class="constitution_content content_wrap page3" id="page3" style="display:none">
+						<table>
+							<thead class="info_title"><tr><td colspan="2">体质辨识</td></tr></thead>
+							<tbody>
+								<tr>
+									<td><span>类型</span></td>
+									<td>	
+										<select id="con_type"><option></option></select>
+										<button>自动分析</button>
+									</td>
+								</tr>
+								<tr>
+									<td><span>初步辩证结果</span></td>
+									<td><select><option></option></select><span id="symbol">*</span></td>
+								</tr>
+								<tr>
+									<td><span>现症状可能表现</span></td>
+									<td><textarea id="xzzknbx"></textarea><span id="symbol">*</span></td>
+								</tr>
+								<tr>
+									<td><span>发病倾向</span></td>
+									<td><textarea id="fbqx"></textarea><span id="symbol">*</span></td>
+								</tr>
+								<tr>
+									<td><span>专家建议</span></td>
+									<td><textarea id="zjjy"></textarea><span id="symbol">*</span></td>
+								</tr>
+							</tbody>
+							</thead>
+						</table>
+						<p class="next" id="next_page3">
+							<button class="next_btn">下一步</button>
+							<button class="save">保存</button>
+						</p>
+					</div>
+					<div class="pro_content content_wrap page4" id="page4" style="display:none">
+						<table>
+							<thead class="info_title"><tr><td colspan="2">调养方案</td></tr></thead>
+							<tbody>
+								<tr>
+									<td><span>体质类型</span></td>
+									<td><input type="text"/><button>初始化</button></td>
+								</tr>
+								<tr>
+									<td><span>季节调养</span></td>
+									<td><textarea id="season" class="tyfa"></textarea><span id="symbol">*</span></td>
+								</tr>
+								<tr>
+									<td><span>饮食建议</span></td>
+									<td><textarea id="advice" class="tyfa"></textarea><span id="symbol">*</span></td>
+								</tr>
+								<tr>
+									<td><span>运动养生</span></td>
+									<td><textarea id="sports" class="tyfa"></textarea><span id="symbol">*</span></td>
+								</tr>
+								<tr>
+									<td><span>药物调养</span></td>
+									<td><textarea id="medicine" class="tyfa"></textarea><span id="symbol">*</span></td>
+								</tr>
+								<tr>
+									<td><span>起居调养</span></td>
+									<td><textarea id="living" class="tyfa"></textarea><span id="symbol">*</span></td>
+								</tr>
+								<tr>
+									<td><span>精神养生</span></td>
+									<td><textarea id="spirit" class="tyfa"></textarea><span id="symbol">*</span></td>
+								</tr>
+								<tr>
+									<td><span>食疗方案</span></td>
+									<td><textarea id="dieat" class="tyfa"></textarea><span id="symbol">*</span></td>
+								</tr>
+							</tbody>
+							</thead>
+						</table>
+						<p class="next" id="next_page4">
 							<button class="report">报告</button>
 							<button class="save">保存</button>
 						</p>
 					</div>
 				</div>
+				</div>
 			</div>
 			<div id="footer">
 			</div>
-			<div  id="Popup" style="width:100%; height:100%;left:0;top:0; position:fixed;background: rgba(0,0,0,0.3)">
+			<div  id="Popup" style="display:none;width:100%; height:100%;left:0;top:0; position:fixed;background: rgba(0,0,0,0.3)">
 				<div id="loginWin">
 				<form class="form">
 					<fieldset class="form_content">
