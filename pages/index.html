@@ -3,11 +3,14 @@
 	<head>
 		<meta charset="utf-8">
 		<title>圣美孚中医综合诊断系统</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="stylesheet" href="../css/main.css"></link>
 		<link rel="stylesheet" href="../css/page.css"></link>
+		<link rel="stylesheet" href="../css/dateTime.css"></link>
 		<script type="text/javascript" src="../js/jQuery.js"></script>
 		<script type="text/javascript" src="../js/page.js"></script>
 		<script type="text/javascript" src="../js/nation.js"></script>
+		<script type="text/javascript" src="../js/alert.js"></script>
 		<script type="text/javascript" src="../js/main.js"></script>
 		<script type="text/javascript">
 		$(function(){
@@ -33,32 +36,30 @@
 	<body>
 		<div id="wrapper">
 			<div id="header">
-				<div class="logo"></div>
-				<div id="header-nav">
-					<h1 class="title">中医综合诊断系统</h1>
-					<ul class="info">
-						<li class="visitor"><a href="">游客</a></li>
-						<li class="login"><a href="">登录</a></li>
-						<li class="exit"><a href="">退出</a></li>
-					</ul>
+				<div class="info">
+				<!-- <li class="visitor"><a href="">游客</a></li> -->
+					<h1 class="title">欢迎访问中医问诊诊断</h1>
+					<p class="login"><a href="">登录</a></p>
+				<!-- <li class="exit"><a href="">退出</a></li> -->
+				</div>
+				<div class="nav">
+					<div class="logo"><a href="/"><img src="../img/logo.png" alt="圣美孚科技"></a></div>
+					<div class="panel">
+						<ul>
+							<li class="info_content"  style="color:rgb(15,156,237);display:block">基本信息<span class="line"></span></li>
+							<li class="inquiry_content" style="">问诊诊断<span class="line"></span></li>
+							<li class="constitution_content">体质辨识<span class="line"></span></li>
+							<li class="pro_content">调养方案<span class="line"></span></li>
+						</ul>
+					</div>
 				</div>
 			</div>
 			<div id="content">
 				<div id="mainbg">
-					<div id="content-left">	
-						<div class="panel">
-							<ul>
-								<li class="info_content" style="background-color:rgb(31,184,205);color:#fff">基本信息</li>
-								<li class="inquiry_content">问诊诊断</li>
-								<li class="constitution_content">体质辨识</li>
-								<li class="pro_content">调养方案</li>
-							</ul>
-						</div>
-					</div>
-					<div id="content-right">
-					<div class="info_content content_wrap page1" id="page1">
+					<div id="content-page">
+					<div class="info_content content_wrap page1" id="page1" style="display:block">
 						<table>
-							<thead class="info_title"><tr><td colspan="6">基本信息</td></tr></thead>
+							<!-- <thead class="right_title"><tr><td colspan="6">基本信息</td></tr></thead> -->
 							<tbody>
 								<tr>
 									<td><label for="docNum">医生编号</label></td>
@@ -70,19 +71,19 @@
 								</tr>
 								<tr>
 									<td><label for="date_time">体检日期</label></td>
-									<td><input type="textbox" id="date_time"/></td>
+									<td><input type="textbox" id="date_time" autocomplete="off"/></td>
 									<td><label for="s_num">流水号</label></td>
-									<td><input type="textbox" id="s_num"/></td>
+									<td><input type="textbox" id="s_num" autocomplete="off"/></td>
 									<td><label for="m_num">病历号</label></td>
-									<td><input type="textbox" id="m_num"/></td>
+									<td><input type="textbox" id="m_num" autocomplete="off"/></td>
 								</tr>
-								<tr>
+							<!-- 	<tr>
 									<td><label for="count_num">检测次数</label></td>
-									<td><input type="textbox" id="count_num"/></td>
-								</tr>
+									<td><input type="textbox" id="count_num" autocomplete="off"/></td>
+								</tr> -->
 								<tr>
 									<td><label for="name">姓名</label></td>
-									<td><input type="textbox" id="name"/><span id="symbol">*</span></td>
+									<td><input type="textbox" id="name" autocomplete="off"/><span id="symbol">*</span></td>
 									<td><label for="sex">性别</label></td>
 									<td>
 										<select id="sex"/>
@@ -92,13 +93,23 @@
 										<span id="symbol">*</span>
 										</td>
 									<td><label for="IDNum">身份证号</label></td>
-									<td><input type="textbox" id="IDNum"/></td>
+									<td><input type="textbox" id="IDNum" autocomplete="off"/></td>
 								</tr>
 								<tr>
-									<td><label for="birthDate">出生日期</label></td>
-									<td><input type="textbox" id="birthDate"/><span id="symbol">*</span></td>
-									<td><label for="age">年龄</label></td>
-									<td><input type="textbox" id="age"/><span id="symbol">*</span></td>
+									<td><label for="date">出生日期</label></td>
+									<td><input type="text" id="date" autocomplete="off" readonly="readonly"><span id="symbol">*</span></td>
+									<script type="text/javascript" src="../js/dateTime.min.js"></script>
+									<script type="text/javascript">
+									$("#date").datetime({
+										type:"date",
+										value:[2020,1,1],
+										success:function(res){
+											console.log(res)
+										}
+									})
+									</script>
+									<td><label for="age" >年龄</label></td>
+									<td><input type="textbox" id="age" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')"/><span id="symbol">*</span></td>
 									<td><label for="status">婚姻状况</label></td>
 									<td>
 										<select id="status"/>
@@ -109,14 +120,14 @@
 								</tr>
 								<tr>
 									<td><label for="height">身高</label></td>
-									<td><input type="textbox" id="height"/><span>cm</span></td>
+									<td><input type="textbox" id="height" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')"/><span>cm</span></td>
 									<td><label for="weight">体重</label></td>
-									<td><input type="textbox" id="weight"/><span>kg</span></td>
+									<td><input type="textbox" id="weight" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')"/><span>kg</span></td>
 								</tr>
 								<tr>
 									<td><label for="p_blood">血压</label></td>
 									<td>
-										<input type="textbox" id="p_blood"/>
+										<input type="textbox" id="p_blood" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')"/>
 										<!-- <span>/</span> -->
 										<!-- <input type="textbox" id="p_blood" style="width:30%"/> -->
 										<span>mmHg</span>
@@ -124,7 +135,7 @@
 									<td></td>
 									<td></td>
 									<td><label for="s_blood">血糖</label></td>
-									<td><input type="textbox" id="s_blood"/><span>mmol/L</span></td>
+									<td><input type="textbox" id="s_blood" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')"/><span>mmol/L</span></td>
 								</tr>
 								<tr>
 									<td><label for="t_blood">血型</label></td>
@@ -170,11 +181,11 @@
 					</div>
 					<div class="inquiry_content content_wrap page2" id="page2" style="display:none">
 						<table>
-							<thead class="info_title"><tr><td colspan="6">问诊诊断</td></tr></thead>
+							<!-- <thead class="right_title"><tr><td colspan="6">问诊诊断</td></tr></thead> -->
 							</thead>
 						</table>
 						<div id="Pagination" class="pagination"><!-- 这里显示分页 --></div>
-						<div id="Searchresult">分页初始化完成后这里的内容会被替换。</div>
+						<div id="Searchresult"></div>
 						<div id="hiddenresult" style="display:none;">
 							<div class="result">
 								<p class="inquiry">1、您手脚发凉吗？</p>
@@ -416,7 +427,7 @@
 					</div>
 					<div class="constitution_content content_wrap page3" id="page3" style="display:none">
 						<table>
-							<thead class="info_title"><tr><td colspan="2">体质辨识</td></tr></thead>
+							<!-- <thead class="right_title"><tr><td colspan="2">体质辨识</td></tr></thead> -->
 							<tbody>
 								<tr>
 									<td><span>类型</span></td>
@@ -451,7 +462,7 @@
 					</div>
 					<div class="pro_content content_wrap page4" id="page4" style="display:none">
 						<table>
-							<thead class="info_title"><tr><td colspan="2">调养方案</td></tr></thead>
+							<!-- <thead class="right_title"><tr><td colspan="2">调养方案</td></tr></thead> -->
 							<tbody>
 								<tr>
 									<td><span>体质类型</span></td>
@@ -476,7 +487,7 @@
 								<tr>
 									<td><span>起居调养</span></td>
 									<td><textarea id="living" class="tyfa"></textarea><span id="symbol">*</span></td>
-								</tr>
+								</tr>	
 								<tr>
 									<td><span>精神养生</span></td>
 									<td><textarea id="spirit" class="tyfa"></textarea><span id="symbol">*</span></td>

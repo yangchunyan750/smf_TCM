@@ -23,27 +23,68 @@ li{
 	margin-right: auto;
 	margin-left: auto;
 	width:100%;
-	height: 7.5vh;
-	line-height: 7.5vh;
+	height: 15vh;
+	line-height: 15vh;
 	border-bottom:1px solid rgb(221,221,221);
 }
-#header .title{
-	font-size:1.4em;
-	margin-left:50px;
-	color:rgb(60,189,209);
+#header .logo{
 	float:left;
+	height:10vh;
+	line-height:10vh;
 }
-#header .info li{
+#header .logo img{
+	width:100%;
+	vertical-align:middle;
+	margin-left:30px;
+}
+#header .title{
+	font-size:1.3em;
+	color:#fff;
 	float:left;
-	margin-left:5px;
+	letter-spacing:1px;
+	font-family:Simsun;
+	margin-left:30px;
+}
+#header .nav ul li{
+	float:left;
+	width:10%;
+	text-align:center;
+	margin-left:10%;
+	height:10vh;
+	line-height:10vh;
+	font-size:1.2em;
+}
+/* #header .nav ul li .line{
+	background: red;
+	height: 5px;
+	position:absolute;
+	left: 24%;
+	width:4%;
+	top:14%;
+	border-radius: 2px;
+	transition: all .5s ease;
+} */
+#header .info .login{
+	float:right;
+	width: 70px;
+	height: 4vh;
+	line-height: 4vh;
+	text-align: center;
+	background:#fff;
+	border-radius: 12px;
+	margin:3px 30px 0 0;
+}
+#header .info .login a{
+	color: #000;
 }
 #header .info{
 	font-size:0.8em;
-	float:right;
-	margin-right:5px;
-}
-#header .info a{
-	color:#666;
+	margin-right:30px;
+	width:100%;
+	height: 5vh;
+	line-height: 5vh;
+	border-bottom:1px solid rgb(221,221,221);
+	background:rgb(15,156,237);
 }
 /* 中间部分 */
 #contain {
@@ -56,38 +97,37 @@ li{
 	width:100%;
 }
 /* 右侧部分 */
-#content-right{
-	float: right;
-	margin: 2px 0px 2px 0px;
-	width: 91.5%;
+#content-page{
+	margin: 2px 0px 2px 5px;
+	width: 99%;
 	text-align:left;
 }
-#content-right table{
+#content-page table{
 	width:100%;
 	border-collapse:collapse;
 }
-#content-right table textarea{
+#content-page table textarea{
 	overflow-y: scroll;
-	width:90%;
+	width:82%;
 	resize:none;
 }
-#content-right table td{
+#content-page table td{
 	padding-top:0.5%;
 	padding-bottom:0.5%;
 }
-#content-right .info_content table td{
+#content-page .info_content table tbody td{
 	padding-top:1%;
 	padding-bottom:1%;
 }
-#content-right table input{
+#content-page table input{
 	width:82%;
 	height:20px;
 }
-#content-right table select{
+#content-page table select{
 	width:83%;
 	height:24px;
 }
-#content-right .info_title,#content-right .inquiry_title,#content-right .constitution_title,#content-right .pro_title{
+#content-page .right_title{
 	padding-bottom:1%;
 	text-align:center;
 	font-size:1.5em;
@@ -100,7 +140,7 @@ li{
 	right:2%;
 }
 .next button{
-	background-color:rgb(31,184,205);
+	background-color:rgb(15,156,237);
 	width:80px;
 	height:40px;
 	color:#fff;
@@ -109,19 +149,19 @@ li{
 	font-size:1em;
 }
 /* 右侧问诊诊断 */
-#content-right .inquiry_content p{
+#content-page .inquiry_content p{
 	margin:0.1vh;
 }
-#content-right .inquiry_content p label{
+#content-page .inquiry_content p label{
 	margin-right:120px;
 } 
 /* 右侧体质辨识 */
-#content-right .constitution_content table>tbody>tr>td:first-child{
+#content-page .constitution_content table>tbody>tr>td:first-child{
 	width:10%;
 	text-align:left;
 }
-#content-right table button{
-	background-color:rgb(31,184,205);
+#content-page table button{
+	background-color:rgb(15,156,237);
 	width:80px;
 	height:30px;
 	color:#fff;
@@ -129,22 +169,28 @@ li{
 	margin-left:10px;
 	font-size:1em;
 }
-#content-right .constitution_content table #xzzknbx{
+#content-page .constitution_content table #xzzknbx{
 	padding-bottom:10%;	
 }
-#content-right .constitution_content table #fbqx{
+#content-page .constitution_content table #fbqx{
 	padding-bottom:1%;
 }
-#content-right .constitution_content table #zjjy{
+#content-page .constitution_content table #zjjy{
 	padding-bottom:14%;
 }
+#content-page #page3 table #con_type{
+	width:26%;
+}
 /* 调养方案 */
-#content-right .pro_content table>tbody>tr>td:first-child{
+#content-page .pro_content table>tbody>tr>td:first-child{
 	width:10%;
 	text-align:left;
 }
-#content-right .pro_content table .tyfa{
+#content-page .pro_content table .tyfa{
 	padding-bottom:2%;
+}
+#content-page #page4 table input{
+	width:20%;
 }
 /* 左侧部分 */
 #content-left{
@@ -156,8 +202,8 @@ li{
 }
 
 #content-left .panel ul>li{
-	height:21.8vh;
-	line-height:21.8vh;
+	height:22.4vh;
+	line-height:22.4vh;	
 	text-align:center;
 	cursor:pointer;
 	font-size:1.2em;
