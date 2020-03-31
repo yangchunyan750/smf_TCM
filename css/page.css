@@ -1,11 +1,10 @@
 @charset "utf-8";
 #Searchresult{
 	height:79.2vh;
-	overflow-y:scroll;
 } 
 #Pagination{
 	position:absolute;
-	bottom:40px;
+	bottom:3vh;
 	left:40%;
 	right:40%;
 } 

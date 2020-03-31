@@ -1,29 +1,29 @@
 $(document).ready(function(){
-	//点击登录弹出弹框提示
-  $(".login").on('click',function(event){
-	  event.preventDefault();
-	  $('#Popup').css('display','block');
-  })
   //关闭弹窗 鼠标划过小手显示
-  $('.close_button').click(function(event){
+  $('.close_btn').click(function(event){
 	  $('#Popup').css('display','none');
   }).mouseover(function(){
+  	  $(this).css({'cursor':'pointer'});
+	  $(this).removeClass('pos_in').addClass('pos_out');
+  }).mouseout(function(){
+	  $(this).removeClass('pos_out').addClass('pos_in');
+  })
+  $(".nav li,button").hover(function(){
   	  $(this).css('cursor','pointer');
   })
   //主模块点击改变背景色并切换显示
-  $('.nav li').click(function(){
-	  $('.content_wrap').css('display','none');
-	  $('.nav li').css({'color':'#000'});
-	  $(this).css({'color':'rgb(15,156,237)'});
-	  // $('.' + $(this).attr("class") +'> .line').css({'display':'block','left':'40%'});
-	  $('#content .'+$(this).attr("class")).css('display','block');
+  $('.header li').click(function(){
+	  $(".header li").removeClass("active");
+	  $(this).addClass("active");
+	  $('content').load()
   })
   //点击下一步切换到下个模块界面
   $("#content-page .next_btn").click(function(){
 	  var page = '.'+$(this).parent().attr("id");
+	  console.log("page:"+page);
 	  var num = parseInt(page.charAt(page.length-1));
-	  // 姓名,出生日期,年龄为空时弹出对话框
-	  if("" != $("#name").val().trim() && "" != $("#date").val().trim() && "" != $("#age").val().trim()){
+	  // 姓名,出生日期,年龄为空时弹出对话框(姓名.年龄,日期都不为空或者基本信息模块不显示)
+	  if(("" != $("#name").val().trim() && "" != $("#date").val().trim() && "" != $("#age").val().trim()) || $('#page1').is(':hidden')){
 		  $('#page'+(num)).css('display','none');
 		  $('#page'+(num+1)).css('display','block');
 		  $('.nav li').css({'color':'#000'});
@@ -52,6 +52,9 @@ $(document).ready(function(){
   var testCheckBox = 0;
   $('#hiddenresult  .inquiry').each(function(){
 	testCheckBox++;  
-    $(this).after("<p id='choose'><label><input type='radio' name="+testCheckBox+"/>无</label><label><input type='radio' name="+testCheckBox+"/>很少</label><label><input type='radio' name="+testCheckBox+"/>有时</label><label><input type='radio' name="+testCheckBox+"/>经常</label><label><input type='radio' name="+testCheckBox+"/>总是</label></p>") 
+    $(this).after("<p id='choose'><label><input type='radio' name=radio"+testCheckBox+" />无</label><label><input type='radio' name=radio"+testCheckBox+" />很少</label><label><input type='radio' name=radio"+testCheckBox+" />有时</label><label><input type='radio' name=radio"+testCheckBox+" />经常</label><label><input type='radio' name=radio"+testCheckBox+" />总是</label></p>") 
   });
+  
 });
+
+

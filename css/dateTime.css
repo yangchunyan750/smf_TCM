@@ -55,14 +55,14 @@ caption, th { text-align: left; }
     float: right
 }
 .changeMonth #pre,.changeMonth #next{
-    display: inline-block;
+ /*   display: inline-block;
     width:20px;
     height:20px;
     cursor: default;
     color:#333;
     background: #fff;
     text-align: center;
-    line-height:20px;
+    line-height:20px; */
 }
 .changeMonth #next{
     margin-left: 10px;

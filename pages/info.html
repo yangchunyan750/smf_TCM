@@ -1,0 +1,139 @@
+<link rel="stylesheet" href="../css/dateTime.css"></link>
+<div class="info_title content_wrap" id="page1">
+	<table class="table">
+		<tbody>
+			<tr>
+				<td class="col-sm-1 text-right"><label for="docNum" class="control-label">医生编号:</label></td>
+				<td class="col-sm-3"><input type="textbox" id="docNum"/></td>
+				<td class="col-sm-1 text-right"><label for="docName">医生姓名:</label></td>
+				<td class="col-sm-3"><input type="textbox" id="docName"/></td>
+				<td class="col-sm-1 text-right"><label for="docDepart">科室:</label></td>
+				<td class="col-sm-3"><input type="textbox" id="docDepart"/></td>
+			</tr>
+			<tr>
+				<td class="col-sm-1 text-right"><label for="date_time">体检日期:</label></td>
+				<td><input type="textbox" id="date_time" autocomplete="off"/></td>
+				<td class="col-sm-1 text-right"><label for="s_num">流水号:</label></td>
+				<td><input type="textbox" id="s_num" autocomplete="off"/></td>
+				<td class="col-sm-1 text-right"><label for="m_num">病历号:</label></td>
+				<td><input type="textbox" id="m_num" autocomplete="off"/></td>
+			</tr>
+			<tr>
+				<td class="col-sm-1 text-right"><label for="name">姓名:</label></td>
+				<td class="col-sm-3"><input type="textbox" id="name" autocomplete="off"/><span id="symbol">*</span></td>
+				<td class="col-sm-1 text-right"><label for="sex">性别:</label></td>
+				<td class="col-sm-3">
+					<select id="sex">
+						<option>男</option>
+						<option>女</option>	
+					</select>
+					<span id="symbol">*</span>
+				</td>
+				<td class="col-sm-1 text-right"><label for="IDNum">身份证号:</label></td>
+				<td class="col-sm-3"><input type="textbox" id="IDNum" autocomplete="off"/></td>
+			</tr>
+			<tr>
+				<td class="col-sm-1 text-right"><label for="date">出生日期:</label></td>
+				<td class="col-sm-3"><input type="text" id="date" autocomplete="off" readonly="readonly"><span id="symbol">*</span></td>
+				<td class="col-sm-1 text-right"><label for="age" >年龄:</label></td>
+				<td class="col-sm-3"><input type="textbox" id="age" autocomplete="off" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')"/><span id="symbol">*</span></td>
+				<td class="col-sm-1 text-right"><label for="status">婚姻状况:</label></td>
+				<td class="col-sm-3">
+					<select id="status">
+						<option>未婚</option>
+						<option>已婚</option>	
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="col-sm-1 text-right"><label for="height">身高:</label></td>
+				<td class="col-sm-3"><input type="textbox" id="height" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')"/><span>cm</span></td>
+				<td class="col-sm-1 text-right"><label for="weight">体重:</label></td>
+				<td class="col-sm-3"><input type="textbox" id="weight" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')"/><span>kg</span></td>
+			</tr>
+			<tr>
+				<td class="col-sm-1 text-right"><label for="p_blood">血压:</label></td>
+				<td class="col-sm-3">
+					<input type="textbox" id="p_blood" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')"/>
+					<span>mmHg</span>
+				</td>
+				<td></td>
+				<td></td>
+				<td class="col-sm-1 text-right"><label for="s_blood">血糖:</label></td>
+				<td class="col-sm-3"><input type="textbox" id="s_blood" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')"/><span>mmol/L</span></td>
+			</tr>
+			<tr>
+				<td class="col-sm-1 text-right"><label for="t_blood">血型:</label></td>
+				<td class="col-sm-3">
+					<select id="blood">
+						<option>A</option>
+						<option>B</option>
+						<option>AB</option>
+						<option>O</option>
+						<option>其他</option>
+					</select>
+				</td>
+				<td class="col-sm-1 text-right"><label for="nation">民族:</label></td>
+				<td class="col-sm-3"><select type="textbox" id="nation"></select></td>
+				<td class="col-sm-1 text-right"><label for="occupation">职业:</label></td>
+				<td class="col-sm-3">
+					<select type="textbox" id="occupation">
+						<option>专业型</option>
+						<option>技能型</option>
+						<option></option>
+						<option></option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="col-sm-1 text-right"><label for="work_unit">工作单位:</label></td>
+				<td colspan="5"><input type="textbox" id="work_unit"/></td>
+			</tr>
+			<tr>
+				<td class="col-sm-1 text-right"><label for="address">地址:</label></td>
+				<td colspan="5"><input type="textbox" id="address"/></td>
+			</tr>
+			<tr>
+				<td class="col-sm-1 text-right"><label for="phone">联系电话:</label></td>
+				<td><input type="textbox" id="phone"/></td>
+				<td class="col-sm-1 text-right"><label for="email">邮箱:</label></td>
+				<td><input type="textbox" id="email"/></td>
+			</tr>
+		</tbody>
+	</table>	
+	<p class="next" id="next_page1">
+		<button class="btn btn-primary next_btn">下一步</button>
+		<button class="btn btn-primary save">保&nbsp;&nbsp;存</button>
+	</p>
+</div>
+<script type="text/javascript" src="../js/nation.js"></script>
+<script>
+	$(function(){
+		// 初始化出生日期弹框
+		$("#date").datetime({
+			type:"date",
+			value:[2020,1,1],
+			success:function(res){
+				console.log(res)
+			}
+		})
+		jQuery.fn.isChildOf = function(b){
+			return (this.parents(b).length > 0);
+		};
+		$(document).click(function(e){
+			// console.log(123);
+			if($('.dateTimeWrap').is(':visible')){
+				if(!$(event.target).isChildOf(".dateTimeWrap") && !$('#date').is(e.target)){
+					$('.dateTimeWrap').hide();
+				}
+			}
+		})
+		// 初始化年龄,根据前面的出生日期进行判断
+		$('#age').click(function(){
+			  if("" != $("#date").val().trim()){
+				  var year = $("#date").val().trim().split('-')[0];
+				  $("#age").val(parseInt(new Date().getFullYear()) - parseInt(year));
+			  }
+		})
+	})
+</script>

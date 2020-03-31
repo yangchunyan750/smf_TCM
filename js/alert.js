@@ -9,7 +9,7 @@
            
         confirm: function(title, message, callback) {  
             if( title == null ) title = 'Confirm';  
-            $.alerts._show(title, message, null, 'confirm', function(result) {  
+            $.alerts._show(title, message, null, 'confirm', function(result) {
                 if( callback ) callback(result);  
             });  
         },  
@@ -104,7 +104,7 @@
    
     $("#mb_btnbox").css({ margin: '15px 0px 10px 0', textAlign: 'center' });  
     $("#mb_btn_ok,#mb_btn_no").css({ width: '80px', height: '30px', color: 'white', border: 'none', borderRadius:'4px'});  
-    $("#mb_btn_ok").css({ backgroundColor: 'rgb(60,189,209)' });  
+    $("#mb_btn_ok").css({ backgroundColor: 'rgb(15,156,237)' });  
     $("#mb_btn_no").css({ backgroundColor: 'gray', marginRight: '40px' });  
    
    
