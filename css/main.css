@@ -68,7 +68,7 @@ li{
 	height:100%;
 }
 .content table{
-	margin-top:20px;
+	margin-top:1%;
 	font-size:0.8em;
 	height:100%;
 }
@@ -77,8 +77,6 @@ li{
 }
 .content table>tbody>tr>td{
 	border:0px !important;
-	/* padding-top:1%;
-	padding-bottom:1%; */
 }
 .content table input{
 	width:80%;
@@ -93,12 +91,18 @@ li{
 .content .inquiry{
 	font-size:0.8em !important;
 }
+.content  #page2{
+	margin-top:1%;
+}
 .content  #page2 label{
 	font-size:0.8em !important;
 	font-weight:normal !important;
 }
 .content  #page2 p{
-	margin:0 0 1% !important;
+	height:2%;
+}
+.content .result{
+	height:100%;
 }
 .content table textarea{
 	overflow-y: scroll;
