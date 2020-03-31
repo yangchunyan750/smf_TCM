@@ -97,6 +97,9 @@ li{
 	font-size:0.8em !important;
 	font-weight:normal !important;
 }
+.content  #page2 p{
+	margin:0 0 1% !important;
+}
 .content table textarea{
 	overflow-y: scroll;
 	width:82%;

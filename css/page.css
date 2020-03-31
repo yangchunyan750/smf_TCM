@@ -4,9 +4,9 @@
 } 
 #Pagination{
 	position:absolute;
-	bottom:3vh;
-	left:40%;
-	right:40%;
+	bottom:18px;
+	left:39%;
+	right:37%;
 } 
 .pagination a {
     text-decoration: none;
