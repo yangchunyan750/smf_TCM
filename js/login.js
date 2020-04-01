@@ -18,7 +18,6 @@ $(function(){
 			  password: $("#password").val(),
 		 };
 		 yAjax.post('php/login.php',data,function(res){
-			 console.log("res:"+res);
 			 if(res <= 0){
 				 $('#password').val('');
 				 setTimeout(function(){
@@ -27,11 +26,10 @@ $(function(){
 				 $('.msg').html('用户名或密码输入不正确,请重新输入');
 			 }else{
 				 $('#Popup').hide();
-				  yCookie.set("userName",res);
-				  console.log("res:"+res);
+				  yCookie.set("userName",data.userName);
 				 var userName = data.userName;
 				 if (userName != null && userName != '' && userName != undefined) {
-				 	var logout = "<a href='#'><span onmouseover='toOver()' onmouseout='toOut()'>" + userName + "</span></a><p onclick='toLogout();' class='text-center' id='exit'>退出</p>";
+				 	var logout = "<span>" + userName + "</span>&nbsp;&nbsp;<span onclick='toLogout();' class='text-center' id='exit'>|&nbsp;&nbsp;退出</span>";
 				 	$(".login").empty().html(logout);
 				 }
 			 }
@@ -47,11 +45,11 @@ function chkLogin () {
 	var userName = yCookie.get("userName");
 	console.log("userName:"+userName);
 	if (userName != null && userName != '' && userName != undefined) {
-		var logout = "<a href='#'><span onmouseover='toOver()' onmouseout='toOut()'>" + userName + "</span></a></i><p onclick='toLogout();' id='exit' class='text-center'>退出</p>";
+		var logout = "<span>" + userName + "</span>&nbsp;&nbsp;<span onclick='toLogout();' id='exit' class='text-center'>|&nbsp;&nbsp;退出</span>";
 		$(".login").empty().html(logout).closest('p').css('width','70px');
 		$('#info_title').addClass('active');
 	} else {
-		var login = "<a href='#'><span onclick='toLogin();'>游客模式,请登录</a></span>";
+		var login = "<a href='#'><span onclick='toLogin();'>游客模式,请登录</span></a>";
 		$(".login").empty().html(login).closest('p').css('width','106px');
 	}
 }
@@ -65,31 +63,15 @@ function toLogin () {
 
 // 到退出页面
 function toLogout () {
-	console.log(123);
 	//调用封装的confirm方法
 	$.alerts.confirm('退出提示','确定要退出吗?',function(res){
 		if(!res){
-			console.log(res);
 			return ;
 		}else{
-			console.log(res);
-			 yCookie.set("userName","")
+			var login = "<a href='#'><span onclick='toLogin();'>游客模式,请登录</span></a>";
+			yCookie.set("userName","");
+			$(".login").empty().html(login);
+			$('#exit').hide();
 		}
 	})
-}
-function toOver(){
-	console.log("over");
-	if($('#exit').is(':hidden')){
-		$('#exit').show();
-		$('.icon').css('background-position','-11px -6px');
-		$('.login span').css('color','rgb(15,156,237)');
-	}
-}
-function toOut(){
-	console.log("out");
-	if($('#exit').is(':visible')){
-		$('#exit').hide();
-		$('.icon').css('background-position','-37px -6px');
-		$('.login span').css('color','#000');
-	}
 }

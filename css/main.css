@@ -229,23 +229,6 @@ li{
 
 #exit{
 	width:43px;
-	background-color: #fff;
-	border:1px solid #ebeef5;
-	border-radius: 4px;
-	-webkit-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-	box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-}
-#exit:before{
-	content:'';
-	box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2); /*配合整体一样的投影*/
-	background-color: #fff;
-	width: 10px;
-	height: 10px;
-	-webkit-transform: rotate(45deg); 
-	transform: rotate(45deg); 
-	-webkit-transition: all .2s ease-in;
-	transition: all .2s ease-in;
-	z-index:-9999;
 }
 
 

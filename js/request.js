@@ -110,11 +110,10 @@ var yCookie = {
 	 */
     get: function (key) {
         var cookieVal = document.cookie; // 获取cookie中所有的内容
-		console.log(cookieVal);
 		var cookieValArr = cookieVal.split(";"); 
 		for (var i = 0; i < cookieValArr.length; i++) {
-			if (cookieValArr[i].split("=")[0] == key) { // 比对key值
-				console.log("VAL:"+cookieValArr[i].split("=")[1]);
+			console.log(cookieValArr[i].split("=")[0]);
+			if (cookieValArr[i].split("=")[0].trim() == key) { // 比对key值
 				return cookieValArr[i].split("=")[1]; // 返回value值
 			}
 		}
