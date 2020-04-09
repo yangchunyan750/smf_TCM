@@ -8,16 +8,13 @@ $(function(){
 	}).mouseout(function(){
 		  $(this).removeClass('pos_out').addClass('pos_in');
 	})
-	
-	
-	
 	//点击登录按钮发送异步请求
 	$(".btn").click(function(){
 		var data = {
 			  userName: $("#userName").val(),
 			  password: $("#password").val(),
 		 };
-		 yAjax.post('php/login.php',data,function(res){
+		 yAjax.post('../php/login.php',data,function(res){
 			 if(res <= 0){
 				 $('#password').val('');
 				 setTimeout(function(){
@@ -29,13 +26,16 @@ $(function(){
 				  yCookie.set("userName",data.userName);
 				 var userName = data.userName;
 				 if (userName != null && userName != '' && userName != undefined) {
+					 $(".leftNav li").removeClass('active');
+					 var infoNav ="<li class='active' id='info_title' url='pages/info.html' page='0' ><span class='bg1'></span><p>基本信息</p></li>";
+					 $('.leftNav ul').prepend(infoNav);
 				 	var logout = "<span>" + userName + "</span>&nbsp;&nbsp;<span onclick='toLogout();' class='text-center' id='exit'>|&nbsp;&nbsp;退出</span>";
 				 	$(".login").empty().html(logout);
 				 }
 			 }
 		 })
 	})
-	
+	//默认游客方式
 	chkLogin();
 })
 
@@ -43,22 +43,19 @@ $(function(){
 function chkLogin () {
 	// 获取cookie中存入的登录名
 	var userName = yCookie.get("userName");
-	console.log("userName:"+userName);
 	if (userName != null && userName != '' && userName != undefined) {
 		var logout = "<span>" + userName + "</span>&nbsp;&nbsp;<span onclick='toLogout();' id='exit' class='text-center'>|&nbsp;&nbsp;退出</span>";
 		$(".login").empty().html(logout).closest('p').css('width','70px');
 		$('#info_title').addClass('active');
 	} else {
-		var login = "<a href='#'><span onclick='toLogin();'>游客模式,请登录</span></a>";
+		var login = "<a href='#'><span onclick='toLogin()'>游客模式,请登录</span></a>";
 		$(".login").empty().html(login).closest('p').css('width','106px');
 	}
 }
 
-
-// 到登录页面
-function toLogin () {
-	$('#Popup').show();
-	$('.msg').html('')
+function toLogin(){
+	$("#Popup").show();
+	$(".msg").html('');
 }
 
 // 到退出页面
@@ -72,6 +69,8 @@ function toLogout () {
 			yCookie.set("userName","");
 			$(".login").empty().html(login);
 			$('#exit').hide();
+			$(".leftNav ul li:first").remove();
+			$("#inquiry_title").addClass('active');
 		}
 	})
 }

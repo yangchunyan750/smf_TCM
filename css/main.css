@@ -25,15 +25,25 @@ li{
 .header {
 	height:6%;
 	min-height:55px;
-	border-bottom:2px solid #ddd;
+	border-bottom:5px solid #78a3d2;;
 	display:flex;
 	align-items: center;	
+	margin-left:10px;
+}
+.header h2{
+	margin:0px;
+	color:rgb(15,156,237);
+	letter-spacing:3px;
 }
 .header img{
-	/* padding-top:2%; */
 	margin-left:15%;
 	display:block;
 	
+}
+.header .login{
+	padding-top:0.7%;
+	padding-bottom:1%;
+	background:url(../img/top.jpg) no-repeat;
 }
 .header ul{
 	margin-bottom:0px !important;
@@ -58,11 +68,86 @@ li{
 .header .active{
 	color:rgb(15,156,237);
 }
+
 /* 中间内容部分 */
+.content .leftNav{
+	height:100%;
+}
+.content .wrap{
+	height:95%;
+	font-size:1em;
+}
+.content .leftNav .fdbody{
+	height:98%;
+	background: #89b5e9;
+	position: absolute;
+	top: 0px;
+	left:2px;
+	width: 85%;
+	bottom: 0;
+	z-index:-999;
+}
+.content .leftNav ul{
+	width: 95%;
+	height:98%;
+	background: #fff;
+	border-left: 1px solid #78a3d2;
+	border-right: 1px solid #78a3d2;
+	border-bottom:5px solid #78a3d2;
+	margin-left:-7px;
+}
+.content .leftNav ul li{
+	display:flex;
+	align-items:center;
+	justify-content: center;
+	flex-direction:column;
+	width:100%;
+	height:15%;
+	font-size:1.1em;
+	text-align:center;
+	letter-spacing:1px;
+}
+.content .leftNav li span{
+	display:block;
+	height:45px;
+	width:45px;
+	margin:3px auto 0px auto;
+	background:url(../img/icon-left.png) no-repeat;
+}
+.content .leftNav .bg1{
+	background-position:3px -51px;
+}
+.content .leftNav .bg2{
+	background-position:-44px -51px;
+}
+.content .leftNav .bg3{
+	background-position:-85px -51px;
+}
+.content .leftNav .bg4{
+	background-position:-133px -51px;
+}
+.content .leftNav .active{
+	color:#fff;
+	background-color:rgb(15,156,237);
+}
+.content .leftNav .active .bg1{
+	background-position:3px -4px;
+}
+.content .leftNav .active .bg2{
+	background-position:-44px -4px;
+}
+.content .leftNav .active .bg3{
+	background-position:-85px -4px;
+}
+.content .leftNav .active .bg4{
+	background-position:-130px -4px;
+}
 .content{
+	border-left: 8px solid #fff;
+	border-right: 1px solid #78a3d2;
 	width:100%;
 	min-width:1200px;
-	height:85%;
+	height:90%;
 }
 .content .content_wrap{
 	height:100%;
@@ -178,7 +263,7 @@ li{
 	border:0px;
 }
 #loginWin .form_content h2{
-	margin-top:20px;
+	margin:20px 0px;
 }
 #loginWin p{
 	margin-top:20px;

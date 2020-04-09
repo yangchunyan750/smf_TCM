@@ -9,14 +9,8 @@ var yAjax = {
 	post: function (url,data,callBackFun) {
 		$.ajax({
 			type: 'post', // 请求方式，后台接收数据用 @RequestBody注解
-			url: baseUrl.baseReqUrl()  + baseUrl.slash + url, // 请求路径
-			data: data, // 数据，转换成json格式
-			// headers : { // 内容格式,json
-			// 	'Content-Type':'application/json;charset=utf8', 
-			// 	'Access-Control-Allow-Origin': '*', 
-			// 	'openId': yCookie.get("openId") 
-			// 	// 'openId': 'o2u96xIQkhc9gIrzn18RPD1WYgsU'
-			// }, 
+			url: url, // 请求路径
+			data: data, // 数据，转换成json格式 
 			success: function (sRes) {
 				// 成功后调用回调函数，将成功的信息返回，依据业务逻辑展示内容
 				callBackFun ? callBackFun(sRes) : function() {}
