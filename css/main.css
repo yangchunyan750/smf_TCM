@@ -154,7 +154,6 @@ li{
 }
 .content table{
 	margin-top:1%;
-	font-size:0.8em;
 	height:100%;
 }
 .content table label{
@@ -165,26 +164,21 @@ li{
 }
 .content table input{
 	width:80%;
+	height:30px;
 }
 .content table select{
 	width:80%;
-	height:22px;
+	height:30px;
 }
 .content #work_unit,.content #address{
 	width:80%;
 }
-.content .inquiry{
-	font-size:0.8em !important;
-}
-.content  #page2{
-	margin-top:1%;
-}
-.content  #page2 label{
-	font-size:0.8em !important;
+.content{
+	font-size:1em !important;
 	font-weight:normal !important;
 }
-.content  #page2 p{
-	height:2%;
+.content  label{
+	font-weight:normal !important;
 }
 .content .result{
 	height:100%;
@@ -225,8 +219,8 @@ li{
 }
 .next{
 	position:absolute;
-	bottom:50px;
-	right:4%;
+	bottom:-15px;
+	right:2%;
 }
 .content button{
 	background-color:rgb(15,156,237) !important;
@@ -279,13 +273,13 @@ li{
 }
 #loginWin input{
 	display: inline-block;
-	height: 15px;
+	height: 30px;
 	padding: 8px 8px;
 	border: 1px solid #ddd;
 	transition: .3s;
 	font-size: 14px;
 	color: #666;
-	width:160px;
+	width:230px;
 }
 #loginWin .close_btn{
 	background-image: url(../img/littleicon.png);
@@ -310,6 +304,10 @@ li{
 #loginWin .msg{
 	color:red;
 	font-size:0.8em;
+	margin-left: 87px;
+	margin-bottom: 12px;
+	text-align:left;
+	height:10px;
 }
 
 #exit{

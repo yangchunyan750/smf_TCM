@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="../css/page.css"></link>
-<div class="inquiry_content content_wrap page2" id="page2">
+<div class="inquiry_content content_wrap page1">
 	<div id="Pagination" class="pagination"></div>
 	<div id="Searchresult"></div>
 	<div id="hiddenresult" style="display:none">
@@ -71,11 +71,12 @@
 			<p>57、您大便有黏滞不爽、有解不尽的感觉吗？</p>
 			<p>58、您小便时尿道有发热感、尿色浓（深）吗？</p>
 			<p>59、您的阴囊部位潮湿吗？</p>
-			<div class="next" id="next_page2">
-				<button class="btn btn-primary next_btn">下一步</button>
+			<div class="next" page="page2">
+				<button class="btn btn-primary next_btn" page="2" url="pages/constitution.html" onclick="nextPage(this)">下一步</button>
 				<button class="btn btn-primary save">保&nbsp;&nbsp;存</button>
 			</div>
 		</div>
+		
 <!-- 		<div class="result">
 			<div id="title_60">
 				<p>60、当前临床症状表现</p>
@@ -185,6 +186,7 @@
 				</div>-->									
 </div>
 <script type="text/javascript" src="../js/page.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
 <script>
 	// 分页显示初始化
 	var initPagination = function() {
@@ -216,15 +218,40 @@
 		// })
 		return false;
 	}
+		// p标签增加样式
+		$('.result p').addClass("inquiry col-sm-12");
+		// 追加问诊题目选项
+		var testCheckBox = 0;
+		$('.inquiry').each(function(){
+			testCheckBox++;  
+			$(this).after("<p id='choose'><label class='control-label'><input type='radio' name=radio"+testCheckBox+" />无</label><label><input type='radio' name=radio"+testCheckBox+" />很少</label><label><input type='radio' name=radio"+testCheckBox+" />有时</label><label><input type='radio' name=radio"+testCheckBox+" />经常</label><label><input type='radio' name=radio"+testCheckBox+" />总是</label></p>") 
+		});
+		
+		$('.result label').addClass("col-sm-2");
+		$(function(){
+			$(".next_btn").click(function(){
+				console.log(123);
+				  var page = '.'+$(this).parent().attr("page");
+				  $(".leftNav li").removeClass("active");
+				  $('.leftNav '+page).addClass("active");//利用pages属性去控制左侧导航
+				  var loadUrl = $(this).attr("url");//获取url
+				  var index = $(this).attr("page");//获取page属性
+				  yCookie.set("currPageIndex", index);
+				  console.log("loadUrl:"+loadUrl);
+				  $('.wrap').load(baseUrl.webProjUrl() + loadUrl); 
+			})
+		})
+		function nextPage(flag){
+			  var page = '.'+$(flag).parent().attr("page");
+			  $(".leftNav li").removeClass("active");
+			  $('.leftNav '+page).addClass("active");//利用pages属性去控制左侧导航
+			  var loadUrl = $(flag).attr("url");//获取url
+			  var index = $(flag).attr("page");//获取page属性
+			  yCookie.set("currPageIndex", index);
+			  console.log("loadUrl:"+loadUrl);
+			  $('.wrap').load(baseUrl.webProjUrl() + loadUrl); 
+		}
+		
+	// })
 	
-	// p标签增加样式
-	$('.result p').addClass("inquiry col-sm-12");
-	// 追加问诊题目选项
-	var testCheckBox = 0;
-	$('.inquiry').each(function(){
-		testCheckBox++;  
-		$(this).after("<p id='choose'><label class='control-label'><input type='radio' name=radio"+testCheckBox+" />无</label><label><input type='radio' name=radio"+testCheckBox+" />很少</label><label><input type='radio' name=radio"+testCheckBox+" />有时</label><label><input type='radio' name=radio"+testCheckBox+" />经常</label><label><input type='radio' name=radio"+testCheckBox+" />总是</label></p>") 
-	});
-	
-	$('.result label').addClass("col-sm-2")
 </script>

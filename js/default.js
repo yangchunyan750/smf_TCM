@@ -5,7 +5,7 @@ $(function() {
 		// 加载默认内容页
 		var userName = yCookie.get("userName");
 		if(userName != null && userName != '' && userName != undefined){
-			var infoNav ="<li url='pages/info.html'><span class='bg1'></span><p>基本信息</p></li>";
+			var infoNav ="<li class='page0' url='pages/info.html'><span class='bg1'></span><p>基本信息</p></li>";
 			$('.leftNav ul').prepend(infoNav);
 		}
 		defaultLoadPage();

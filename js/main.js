@@ -11,35 +11,15 @@ $(document).ready(function(){
   $(".nav li,button").hover(function(){
   	  $(this).css('cursor','pointer');
   })
-  //主模块点击改变背景色并切换显示
-  $('.header li').click(function(){
-	  $(".header li").removeClass("active");
-	  $(this).addClass("active");
-	  $('content').load()
-  })
-  //点击下一步切换到下个模块界面
-  $("#content-page .next_btn").click(function(){
-	  var page = '.'+$(this).parent().attr("id");
-	  console.log("page:"+page);
-	  var num = parseInt(page.charAt(page.length-1));
-	  // 姓名,出生日期,年龄为空时弹出对话框(姓名.年龄,日期都不为空或者基本信息模块不显示)
-	  if(("" != $("#name").val().trim() && "" != $("#date").val().trim() && "" != $("#age").val().trim()) || $('#page1').is(':hidden')){
-		  $('#page'+(num)).css('display','none');
-		  $('#page'+(num+1)).css('display','block');
-		  $('.nav li').css({'color':'#000'});
-		  $('.nav li').eq(num).css({'color':'rgb(15,156,237)'})
-	  }else{
-		  if("" == $("#name").val()){
-			  myAlert('','请输入姓名！',function(){});  
-		  }
-		  if("" == $("#date").val()){
-			  myAlert('','请选择出生日期！',function(){});  
-		  }
-		  if("" == $("#age").val()){
-		  	  myAlert('','请输入年龄！',function(){});  
-		  }
-	  }
-	  
+  $(".next_btn").click(function(){
+	  var page = '.'+$(this).parent().attr("page");
+	  $(".leftNav li").removeClass("active");
+	  $('.leftNav '+page).addClass("active");//利用pages属性去控制左侧导航
+	  var loadUrl = $(this).attr("url");//获取url
+	  var index = $(this).attr("page");//获取page属性
+	  yCookie.set("currPageIndex", index);
+	  console.log("loadUrl:"+loadUrl);
+	  $('.wrap').load(baseUrl.webProjUrl() + loadUrl); 
   })
   // 点击年龄,根据前面的出生日期进行判断
   $('#age').click(function(){
@@ -48,12 +28,6 @@ $(document).ready(function(){
 		  $("#age").val(parseInt(new Date().getFullYear()) - parseInt(year));
 	  }
   })
-  //追加问诊题目选项
-  var testCheckBox = 0;
-  $('#hiddenresult  .inquiry').each(function(){
-	testCheckBox++;  
-    $(this).after("<p id='choose'><label><input type='radio' name=radio"+testCheckBox+" />无</label><label><input type='radio' name=radio"+testCheckBox+" />很少</label><label><input type='radio' name=radio"+testCheckBox+" />有时</label><label><input type='radio' name=radio"+testCheckBox+" />经常</label><label><input type='radio' name=radio"+testCheckBox+" />总是</label></p>") 
-  });
   
 });
 

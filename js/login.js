@@ -14,24 +14,29 @@ $(function(){
 			  userName: $("#userName").val(),
 			  password: $("#password").val(),
 		 };
-		 $("#userName").val("");
-		 $("#password").val("");
-		 yAjax.post('../php/login.php',data,function(res){
+		 // 点击登录按钮判空提示
+		 if(data.userName == "" || data.userName == null){
+			 $(".msg").html("请输入账号");
+			 return;
+		 }
+		 if(data.password == "" || data.password == null){
+			 $(".msg").html("请输入密码");
+			 return;
+		 }
+		yAjax.post('../php/login.php',data,function(res){
 			 if(res <= 0){
-				 console.log("res:"+res);
 				 $('#password').val('');
 				 setTimeout(function(){
 					$("#password").focus();
 				},50)
 				 $('.msg').html('用户名或密码输入不正确,请重新输入');
 			 }else{
-				 console.log("res:"+res);
 				 $('#Popup').hide();
 				  yCookie.set("userName",data.userName);
 				 var userName = data.userName;
 				 if (userName != null && userName != '' && userName != undefined) {
 					 $(".leftNav li").removeClass('active');
-					 var infoNav ="<li class='active' url='pages/info.html' page='0' ><span class='bg1'></span><p>基本信息</p></li>";
+					 var infoNav ="<li class='active page0' url='pages/info.html'><span class='bg1'></span><p>基本信息</p></li>";
 					 $('.leftNav ul').prepend(infoNav);
 				 	var logout = "<span>" + userName + "</span>&nbsp;&nbsp;<span onclick='toLogout();' class='text-center' id='exit'>|&nbsp;&nbsp;退出</span>";
 				 	$(".login").empty().html(logout);

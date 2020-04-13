@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="../css/dateTime.css"></link>
-<div class="info_title content_wrap" id="page1">
+<div class="info_title content_wrap page0">
 	<table class="table">
 		<tbody>
 			<tr>
@@ -101,12 +101,13 @@
 			</tr>
 		</tbody>
 	</table>	
-	<p class="next" id="next_page1">
-		<button class="btn btn-primary next_btn">下一步</button>
+	<p class="next" page="page1">
+		<button class="btn btn-primary next_btn" page="1" url="pages/inquiry.html">下一步</button>
 		<button class="btn btn-primary save">保&nbsp;&nbsp;存</button>
 	</p>
 </div>
 <script type="text/javascript" src="../js/nation.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
 <script>
 	$(function(){
 		// 初始化出生日期弹框
@@ -121,19 +122,11 @@
 			return (this.parents(b).length > 0);
 		};
 		$(document).click(function(e){
-			// console.log(123);
 			if($('.dateTimeWrap').is(':visible')){
 				if(!$(event.target).isChildOf(".dateTimeWrap") && !$('#date').is(e.target)){
 					$('.dateTimeWrap').hide();
 				}
 			}
-		})
-		// 初始化年龄,根据前面的出生日期进行判断
-		$('#age').click(function(){
-			  if("" != $("#date").val().trim()){
-				  var year = $("#date").val().trim().split('-')[0];
-				  $("#age").val(parseInt(new Date().getFullYear()) - parseInt(year));
-			  }
 		})
 	})
 </script>
