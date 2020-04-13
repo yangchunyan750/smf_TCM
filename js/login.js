@@ -14,23 +14,36 @@ $(function(){
 			  userName: $("#userName").val(),
 			  password: $("#password").val(),
 		 };
+		 $("#userName").val("");
+		 $("#password").val("");
 		 yAjax.post('../php/login.php',data,function(res){
 			 if(res <= 0){
+				 console.log("res:"+res);
 				 $('#password').val('');
 				 setTimeout(function(){
 					$("#password").focus();
 				},50)
 				 $('.msg').html('用户名或密码输入不正确,请重新输入');
 			 }else{
+				 console.log("res:"+res);
 				 $('#Popup').hide();
 				  yCookie.set("userName",data.userName);
 				 var userName = data.userName;
 				 if (userName != null && userName != '' && userName != undefined) {
 					 $(".leftNav li").removeClass('active');
-					 var infoNav ="<li class='active' id='info_title' url='pages/info.html' page='0' ><span class='bg1'></span><p>基本信息</p></li>";
+					 var infoNav ="<li class='active' url='pages/info.html' page='0' ><span class='bg1'></span><p>基本信息</p></li>";
 					 $('.leftNav ul').prepend(infoNav);
 				 	var logout = "<span>" + userName + "</span>&nbsp;&nbsp;<span onclick='toLogout();' class='text-center' id='exit'>|&nbsp;&nbsp;退出</span>";
 				 	$(".login").empty().html(logout);
+					$('.wrap').load("../pages/info.html");
+					$(".leftNav li").click(function(){
+						$(".leftNav li").removeClass("active");
+						$(this).addClass("active");
+						var loadUrl = $(this).attr("url");
+						var index = $(this).index();//获取ul的第几个li
+						yCookie.set("currPageIndex", index);
+						$('.wrap').load(baseUrl.webProjUrl() + loadUrl);
+					})
 				 }
 			 }
 		 })
@@ -46,7 +59,6 @@ function chkLogin () {
 	if (userName != null && userName != '' && userName != undefined) {
 		var logout = "<span>" + userName + "</span>&nbsp;&nbsp;<span onclick='toLogout();' id='exit' class='text-center'>|&nbsp;&nbsp;退出</span>";
 		$(".login").empty().html(logout).closest('p').css('width','70px');
-		$('#info_title').addClass('active');
 	} else {
 		var login = "<a href='#'><span onclick='toLogin()'>游客模式,请登录</span></a>";
 		$(".login").empty().html(login).closest('p').css('width','106px');
@@ -55,6 +67,8 @@ function chkLogin () {
 
 function toLogin(){
 	$("#Popup").show();
+	$("#userName").val("");
+	$("#password").val("");
 	$(".msg").html('');
 }
 
@@ -70,7 +84,9 @@ function toLogout () {
 			$(".login").empty().html(login);
 			$('#exit').hide();
 			$(".leftNav ul li:first").remove();
+			$(".leftNav li").removeClass('active');
 			$("#inquiry_title").addClass('active');
+			$('.wrap').load("../pages/inquiry.html");
 		}
 	})
 }

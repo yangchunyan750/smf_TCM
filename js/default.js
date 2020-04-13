@@ -5,7 +5,7 @@ $(function() {
 		// 加载默认内容页
 		var userName = yCookie.get("userName");
 		if(userName != null && userName != '' && userName != undefined){
-			var infoNav ="<li id='info_title' url='pages/info.html'><span class='bg1'></span><p>基本信息</p></li>";
+			var infoNav ="<li url='pages/info.html'><span class='bg1'></span><p>基本信息</p></li>";
 			$('.leftNav ul').prepend(infoNav);
 		}
 		defaultLoadPage();
@@ -14,7 +14,7 @@ $(function() {
 			$(".leftNav li").removeClass("active");
 			$(this).addClass("active");
 			var loadUrl = $(this).attr("url");
-			var index = $(this).attr("page");
+			var index = $(this).index();//获取ul的第几个li
 			yCookie.set("currPageIndex", index);
 			$('.wrap').load(baseUrl.webProjUrl() + loadUrl);
 		})
@@ -22,10 +22,14 @@ $(function() {
 })
 function defaultLoadPage(){
 	var currPageIndex = yCookie.get("currPageIndex");//默认加载第0页
+	var userName = yCookie.get("userName");
 	$(".leftNav li").removeClass("active");
-	if (checkStr(currPageIndex)) { // 如果没有,默认加入首页的下标
+	console.log("currPageIndex:"+currPageIndex)
+	//currPageIndex如果值为空并且userName值不存在,则默认加载第1页;
+	if (checkStr(currPageIndex) && checkStr(userName)) { // 如果没有,默认加入首页的下标
 		yCookie.set("currPageIndex", 0);
-		$('.wrap').load("info.html");
+		$(".leftNav li").eq(currPageIndex).addClass("active");
+		$('.wrap').load("../pages/inquiry.html");
 	} else {
 		var pageUrl = $(".leftNav li").eq(currPageIndex).addClass("active").attr("url");
 		$('.wrap').load(baseUrl.webProjUrl() + pageUrl);
