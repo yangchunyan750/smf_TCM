@@ -47,6 +47,7 @@ jQuery.fn.pagination = function(maxentries, opts){
 		 * @参数 {int} page_id 为新页码
 		 */
 		function pageSelected(page_id, evt){
+			console.log("页码:"+page_id);
 			current_page = page_id;
 			drawLinks();
 			var continuePropagation = opts.callback(page_id, panel);

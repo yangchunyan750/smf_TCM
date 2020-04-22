@@ -8,6 +8,7 @@ $(function() {
 			var infoNav ="<li class='page0' url='pages/info.html'><span class='bg1'></span><p>基本信息</p></li>";
 			$('.leftNav ul').prepend(infoNav);
 		}
+		//发送异步请求,从数据库调取资源
 		defaultLoadPage();
 		//点击左侧导航切换不同内容
 		$(".leftNav li").click(function(){

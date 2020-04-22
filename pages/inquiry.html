@@ -201,6 +201,7 @@
 	 
 	function pageselectCallback(page_index, jq){
 		var new_content = $("#hiddenresult div.result:eq("+page_index+")").clone();
+		console.log("page:"+page_index);
 		$("#Searchresult").empty().append(new_content); //装载对应分页的内容  
 		// $("#title_60 label input").click(function(e){
 		// 	$("#title_61").show();

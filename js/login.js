@@ -36,7 +36,7 @@ $(function(){
 				 var userName = data.userName;
 				 if (userName != null && userName != '' && userName != undefined) {
 					 $(".leftNav li").removeClass('active');
-					 var infoNav ="<li class='active page0' url='pages/info.html'><span class='bg1'></span><p>基本信息</p></li>";
+					 var infoNav ="<li class='active' page='page0' url='pages/info.html'><span class='bg1'></span><p>基本信息</p></li>";
 					 $('.leftNav ul').prepend(infoNav);
 				 	var logout = "<span>" + userName + "</span>&nbsp;&nbsp;<span onclick='toLogout();' class='text-center' id='exit'>|&nbsp;&nbsp;退出</span>";
 				 	$(".login").empty().html(logout);
