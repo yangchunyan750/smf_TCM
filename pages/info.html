@@ -128,28 +128,20 @@
 				}
 			}
 		})
-		// var name=localStorage.getItem("name");
-		// if(name != '' && name != undefined && name != null){
-		// 	$('#name').val(name);
-		// }
-		// var sex=localStorage.getItem("sex");
-		// if(sex != '' && sex != undefined && sex != null){
-		// 	$('#sex').val(sex);
-		// }
 		$("input").blur(function(){
 			var userInfo={
 				name:$('#name').val(),
-				sex:$('#sex').val(),
+				sex:$('#sex option:checked').val(),
 				IDNum:$("#IDNum").val(),
-				data:$('#date').val(),
+				data:$('#date').text(),
 				age:$('#age').val(),
-				status:$('#status').val(),
+				status:$('#status option:checked').val(),
 				height:$('#height').val(),
-				wight:$('#weight').val(),
+				weight:$('#weight').val(),
 				p_blood:$('#p_blood').val(),
 				s_blood:$('#s_blood').val(),
 				blood:$('#blood').val(),
-				nation:$('#nation').val(),
+				nation:$('#nation option:checked').val(),
 				occupation:$('#occupation').val(),
 				work_unit:$('#work_unit').val(),
 				address:$('#address').val(),
@@ -169,10 +161,16 @@
 			$('#age').val(item.age);
 			$('#status').val(item.status);
 			$('#height').val(item.height);
-			$('#wight').val(item.wight);
+			$('#weight').val(item.wight);
 			$('#p_blood').val(item.p_blood);
 			$('#s_blood').val(item.s_blood);
 			$('#blood').val(item.blood);
+			$('#nation').val(item.nation);
+			$('#occupation').val(item.occupation);
+			$('#work_unit').val(item.work_unit);
+			$('#address').val(item.address);
+			$('#phone').val(item.phone);
+			$('#email').val(item.email);
 		})
 	})
 </script>
