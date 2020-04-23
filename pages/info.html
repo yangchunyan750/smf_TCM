@@ -20,7 +20,7 @@
 			</tr>
 			<tr>
 				<td class="col-sm-1 text-right"><label for="name">姓名:</label></td>
-				<td class="col-sm-3"><input type="textbox" id="name" autocomplete="off"/><span id="symbol">*</span></td>
+				<td class="col-sm-3"><input type="textbox" id="name" autocomplete="off" value=""/><span id="symbol">*</span></td>
 				<td class="col-sm-1 text-right"><label for="sex">性别:</label></td>
 				<td class="col-sm-3">
 					<select id="sex">
@@ -127,6 +127,52 @@
 					$('.dateTimeWrap').hide();
 				}
 			}
+		})
+		// var name=localStorage.getItem("name");
+		// if(name != '' && name != undefined && name != null){
+		// 	$('#name').val(name);
+		// }
+		// var sex=localStorage.getItem("sex");
+		// if(sex != '' && sex != undefined && sex != null){
+		// 	$('#sex').val(sex);
+		// }
+		$("input").blur(function(){
+			var userInfo={
+				name:$('#name').val(),
+				sex:$('#sex').val(),
+				IDNum:$("#IDNum").val(),
+				data:$('#date').val(),
+				age:$('#age').val(),
+				status:$('#status').val(),
+				height:$('#height').val(),
+				wight:$('#weight').val(),
+				p_blood:$('#p_blood').val(),
+				s_blood:$('#s_blood').val(),
+				blood:$('#blood').val(),
+				nation:$('#nation').val(),
+				occupation:$('#occupation').val(),
+				work_unit:$('#work_unit').val(),
+				address:$('#address').val(),
+				phone:$('#phone').val(),
+				email:$('#email').val()
+			}
+			var info=[];
+			info.push(userInfo);
+			localStorage.setItem("info",JSON.stringify(info));
+		})
+		var userInfo=$.parseJSON(localStorage.getItem("info"));
+		$(userInfo).each(function(index,item){
+			$('#name').val(item.name);
+			$('#sex').val(item.sex);
+			$('#IDNum').val(item.IDNum);
+			$('#date').val(item.data);
+			$('#age').val(item.age);
+			$('#status').val(item.status);
+			$('#height').val(item.height);
+			$('#wight').val(item.wight);
+			$('#p_blood').val(item.p_blood);
+			$('#s_blood').val(item.s_blood);
+			$('#blood').val(item.blood);
 		})
 	})
 </script>

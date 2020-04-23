@@ -23,13 +23,14 @@ $(function(){
 			 $(".msg").html("请输入密码");
 			 return;
 		 }
+		$(this).text('登录中...');
 		yAjax.post('../php/login.php',data,function(res){
 			 if(res <= 0){
-				 $('#password').val('');
 				 setTimeout(function(){
 					$("#password").focus();
-				},50)
-				 $('.msg').html('用户名或密码输入不正确,请重新输入');
+				},1000)
+				$(".btn").text('登录');
+				$('.msg').html('用户名或密码输入不正确,请重新输入');
 			 }else{
 				 $('#Popup').hide();
 				  yCookie.set("userName",data.userName);
@@ -42,6 +43,13 @@ $(function(){
 				 	$(".login").empty().html(logout);
 					$('.wrap').load("../pages/info.html");
 					$(".leftNav li").click(function(){
+						// if($('#name').val() != '' && $('#name').val() != undefined && $('#name').val() != null){
+						// 	localStorage.setItem("name",$('#name').val());
+						// }
+						// if($('#sec').val() != '' && $('#sex').val() != undefined && $('#sex').val() != null){
+						// 	localStorage.setItem("sex",$('#sex').val());
+						// }
+						//循环所有的input输入框并把该值存到json中
 						$(".leftNav li").removeClass("active");
 						$(this).addClass("active");
 						var loadUrl = $(this).attr("url");
@@ -92,6 +100,8 @@ function toLogout () {
 			$(".leftNav li").removeClass('active');
 			$("#inquiry_title").addClass('active');
 			$('.wrap').load("../pages/inquiry.html");
+			$(this).text('登录');
+			localStorage.clear();
 		}
 	})
 }
