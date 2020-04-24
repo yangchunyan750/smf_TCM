@@ -1,0 +1,101 @@
+#app {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('../images/questionaire_bg.jpg') no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  overflow: hidden;
+}
+
+.questionaire-box {
+  position: absolute;
+  top: 84px;
+  bottom: 76px;
+  left: 0;
+  right: 0;
+  background: url('../images/questionaire_inner_bg.jpg') repeat;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.ques-index {
+  position: relative;
+  top: -2px;
+  display: inline-block;
+  width: 25px;
+  height: 21px;
+  line-height: 20px;
+  background: url('../images/questionaire_title.png') no-repeat;
+  font-size: 16px;
+  color: #ccb891;
+  padding-left: 1px;
+  margin-right: 6px;
+}
+
+.center {
+  padding-left: 6px;
+}
+
+.logo {
+  margin: 24px 0 0 37px;
+}
+
+.el-form-item {
+  background: rgba(42, 39, 21, 0.1);
+  margin: 20px 35px;
+  padding: 12px;
+}
+
+.el-form--label-top .el-form-item__label {
+  padding: 0;
+  line-height: 28px;
+  font-size: 20px;
+  color: #3c3018;
+}
+
+.el-radio__label {
+  position: relative;
+  font-size: 20px;
+  color: #3c3018;
+  top: 3px;
+  left: 0;
+}
+
+.el-form-item__error {
+  top: 92%;
+  padding-top: 0;
+}
+
+.btns {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 76px;
+  text-align: center;
+}
+
+.btns div {
+  display: inline-block;
+  margin: 10px 38px;
+}
+
+.submit {
+  width: 148px;
+  height: 51px;
+  background: url('../images/questionaire_submit.jpg') no-repeat;
+  background-size: contain;
+  background-position: 50% 50%;
+  cursor: pointer;
+}
+
+.return {
+  width: 148px;
+  height: 51px;
+  background: url('../images/questionaire_return.jpg') no-repeat;
+  background-size: contain;
+  background-position: 50% 50%;
+  cursor: pointer;
+}
