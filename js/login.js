@@ -100,7 +100,7 @@ function toLogout () {
 			$(".leftNav li").removeClass('active');
 			$("#inquiry_title").addClass('active');
 			$('.wrap').load("../pages/inquiry.html");
-			$(this).text('登录');
+			$('.submit').text('登录');
 			localStorage.clear();
 		}
 	})
