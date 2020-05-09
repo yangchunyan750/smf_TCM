@@ -3,6 +3,11 @@
 <link rel="stylesheet" href="../css/element.css">
 <link rel="stylesheet" href="../css/reset.css">
 <link rel="stylesheet" href="../css/questionaire.css">
+<style  type="text/css">
+    [v-cloak] {
+        display: none !important;
+    }
+</style>
 <div id="app" v-cloak>
     <div class="logo">
       <img src="./images/title.png" alt="" srcset="">
@@ -14,7 +19,7 @@
           :prop="'lists.' + index + '.value'" :rules="{
             required: true, message: '此题为必答题', trigger: 'change'
           }">
-          <span slot="label"><span :class="{'center': index < 9, 'ques-index': true}">{{index + 1}}</span>{{item.content}}</span>
+          <span slot="label"><span :class="{'center': index < 9, 'ques-index': true}">{{index + 1}}、</span>{{item.content}}</span>
           <el-radio-group v-model="item.value">
             <el-radio :label="1">无</el-radio>
             <el-radio :label="2">很少</el-radio>
@@ -26,7 +31,7 @@
       </el-form>
     </div>
 	<p class="btns" page="page2">
-	  <button class="btn next_btn" page="2" url="pages/constitution.html">下一步</button>
+	  <button class="btn next_btn" page="2" url="pages/constitution.html" @click="next('dynamicValidateForm')">下一步</button>
 	  <button class="btn save">保&nbsp;&nbsp;存</button>	
 	</p>
 </div>
@@ -46,18 +51,98 @@
 		},
 		methods:{
 			getQuestionaire:function(){
-				let that = this;
+				let sex = "Man";
+				if(localStorage.getItem("info") && localStorage.getItem("info") != undefined && localStorage.getItem("info") != null){
+					sex = JSON.parse(localStorage.getItem("info"))[0].sex;
+				}
+				if(sex=='女'){
+					sex='Women'
+				}else{
+					sex='Man';
+				}
+				let that=this;
 				$.ajax({
-					type:'GET',
-					url:'../inqueryMan.json',
+					type:'POST',
+					url:'../php/inquiry'+sex+'.php',
 					contentType:'application/json',
 					success:function(res){
-						that.dynamicValidateForm['lists']=res
+						that.dynamicValidateForm['lists']=res;
 					},
 					error:function(){
 						alert('获取问卷失败');
 					}
 				})
+			},
+			next:function(formName){
+				// 读取所有radio的值并保存
+				var radioVal=[];
+				//点击“下一步”时，判断所有的问诊题目是否完成，
+				// 如果没有完成进行提示，如果全部勾选则保存当前的数据；
+				// 切换模块时要保存当前的数据；
+				// 如果没有全部勾选，后续的体质辨识初始化不能有具体的方案。
+				let that = this;
+				that.$refs[formName].validate((valid) => {
+					console.log(valid);
+				if (!valid) {
+				  that.pageLoading = true
+				  let resList = that.dynamicValidateForm.lists
+				  console.log(resList)
+				  let arr = []
+				  if (resList.length > 0) {
+					for (let i = 0, len = resList.length; i < len; i++) {
+					  arr.push({
+						id: resList[i].id,
+						value: resList[i].value
+					  })
+					}
+				  }
+				  console.log(arr);
+				  let userInfo = localStorage.getItem('userInfo')
+				  if (!JSON.parse(userInfo).id) {
+					return false
+				  }
+				  var params = new URLSearchParams();
+				  params.append('userId', JSON.parse(userInfo).id);
+				  params.append('result', JSON.stringify(arr));
+				  $.ajax({
+					type: "POST",
+					url:"../php/inquiryNext.php",
+					contentType: "application/x-www-form-urlencoded",
+					processData: false,
+					data: params,
+					success: function (res) {
+					  console.log(res)
+					  that.pageLoading = false
+					  that.$notify({
+						title: '成功',
+						message: '提交问卷成功',
+						type: 'success'
+					  });
+					  localStorage.clear('userInfo')
+					  // // 把信息存到localStorage后跳转
+					  setTimeout(() => {
+						window.history.go(-1)
+					  }, 1500)
+					},
+					error:function(e){
+					  that.pageLoading = false
+					  that.$notify({
+						title: '提示',
+						message: '提交问卷失败，请重试',
+						type: 'error'
+					  });
+					}
+				  })
+				} else {
+				  that.$notify({
+					title: '提示',
+					message: '请完善问卷后提交',
+					type: 'warning'
+				  });
+				  console.log('error submit!!');
+				  return false;
+				}
+			  });
 			}
 		}
 	})

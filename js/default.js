@@ -14,14 +14,10 @@ $(function() {
 		$(".leftNav li").click(function(){
 			var loadUrl = $(this).attr("url");
 			var index = $(this).index();//获取ul的第几个li
-			// if($('#name').val() != ''){
-			// 	localStorage.setItem("name",$('#name').val());
-			// }
 			$(".leftNav li").removeClass("active");
 			$(this).addClass("active");
 			yCookie.set("currPageIndex", index);
 			$('.wrap').load(baseUrl.webProjUrl() + loadUrl);
-			// $('#name').val(localStorage.getItem("name"));
 		})
 	});
 })
@@ -51,6 +47,5 @@ function checkStr(str) {
 function defaultLoadInfo(){
 	//缓存当前页信息
 	// 如果刷新则重新加载，当前页信息不会被保存，用localstorage缓存当前页信息
-	
 	console.log(localStorage.getItem("name"));
 }

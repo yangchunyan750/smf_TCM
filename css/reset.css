@@ -48,14 +48,14 @@ input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {color: #cc
 }
 
 .el-input.is-active .el-input__inner, .el-input__inner:focus, .el-input__inner:hover, .el-radio__label, .el-radio__inner, .el-radio__inner:hover {
-  border-color: #8b7344;
-  color: #3c3018;
+  border-color: #64afc5;
+  color: #347077;
 }
 
 .el-radio__input.is-checked .el-radio__inner {
   border-width: 3px;
-  border-color: #7c6b56;
-  background: #8b7344;
+  border-color: #64afc5;
+  color: #347077;
 }
 
 .el-radio__input.is-checked+.el-radio__label {

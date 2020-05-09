@@ -1,3 +1,4 @@
+
 #app {
   position: fixed;
   top: 58px;
@@ -23,14 +24,14 @@
 
 .ques-index {
   position: relative;
-  top: -2px;
+  top: 0px;
   display: inline-block;
   width: 25px;
   height: 21px;
   line-height: 20px;
   background: url('../img/questionaire_title.png') no-repeat;
   font-size: 16px;
-  color: #ccb891;
+  color: #000;
   padding-left: 1px;
   margin-right: 6px;
 }
