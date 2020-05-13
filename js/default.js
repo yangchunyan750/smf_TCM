@@ -25,7 +25,6 @@ function defaultLoadPage(){
 	var currPageIndex = yCookie.get("currPageIndex");//默认加载第0页
 	var userName = yCookie.get("userName");
 	$(".leftNav li").removeClass("active");
-	console.log("currPageIndex:"+currPageIndex)
 	//currPageIndex如果值为空并且userName值不存在,则默认加载第1页;
 	if (checkStr(currPageIndex) && checkStr(userName)) { // 如果没有,默认加入首页的下标
 		yCookie.set("currPageIndex", 0);

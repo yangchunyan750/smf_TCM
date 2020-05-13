@@ -82,7 +82,7 @@
 				// 如果没有全部勾选，后续的体质辨识初始化不能有具体的方案。
 				let that = this;
 				that.$refs[formName].validate((valid) => {
-					console.log(valid);
+					console.log(valid.value);
 				if (!valid) {
 				  that.pageLoading = true
 				  let resList = that.dynamicValidateForm.lists
@@ -104,6 +104,7 @@
 				  var params = new URLSearchParams();
 				  params.append('userId', JSON.parse(userInfo).id);
 				  params.append('result', JSON.stringify(arr));
+				  //获取单选按钮的value值
 				  $.ajax({
 					type: "POST",
 					url:"../php/inquiryNext.php",
@@ -113,32 +114,32 @@
 					success: function (res) {
 					  console.log(res)
 					  that.pageLoading = false
-					  that.$notify({
-						title: '成功',
-						message: '提交问卷成功',
-						type: 'success'
-					  });
+					 //  that.$notify({
+						// title: '成功',
+						// message: '提交问卷成功',
+						// type: 'success'
+					 //  });
 					  localStorage.clear('userInfo')
 					  // // 把信息存到localStorage后跳转
 					  setTimeout(() => {
 						window.history.go(-1)
 					  }, 1500)
 					},
-					error:function(e){
-					  that.pageLoading = false
-					  that.$notify({
-						title: '提示',
-						message: '提交问卷失败，请重试',
-						type: 'error'
-					  });
-					}
+					// error:function(e){
+					//   that.pageLoading = false
+					//   that.$notify({
+					// 	title: '提示',
+					// 	message: '提交问卷失败，请重试',
+					// 	type: 'error'
+					//   });
+					// }
 				  })
 				} else {
-				  that.$notify({
-					title: '提示',
-					message: '请完善问卷后提交',
-					type: 'warning'
-				  });
+				 //  that.$notify({
+					// title: '提示',
+					// message: '请完善问卷后提交',
+					// type: 'warning'
+				 //  });
 				  console.log('error submit!!');
 				  return false;
 				}

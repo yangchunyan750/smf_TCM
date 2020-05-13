@@ -1,13 +1,4 @@
 $(function(){
-	//关闭弹窗 鼠标划过小手显示
-	$('.close_btn').click(function(event){
-		  $('#Popup').css('display','none');
-	}).mouseover(function(){
-		  $(this).css({'cursor':'pointer'});
-		  $(this).removeClass('pos_in').addClass('pos_out');
-	}).mouseout(function(){
-		  $(this).removeClass('pos_out').addClass('pos_in');
-	})
 	//点击登录按钮发送异步请求
 	$(".btn").click(function(){
 		var data = {

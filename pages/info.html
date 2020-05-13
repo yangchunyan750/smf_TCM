@@ -128,26 +128,27 @@
 				}
 			}
 		})
+		//对输入的基本信息进行缓存
+		var userInfo={
+			name:$('#name').val(),
+			sex:$('#sex option:checked').val(),
+			IDNum:$("#IDNum").val(),
+			data:$('#date').text(),
+			age:$('#age').val(),
+			status:$('#status option:checked').val(),
+			height:$('#height').val(),
+			weight:$('#weight').val(),
+			p_blood:$('#p_blood').val(),
+			s_blood:$('#s_blood').val(),
+			blood:$('#blood').val(),
+			nation:$('#nation option:checked').val(),
+			occupation:$('#occupation').val(),
+			work_unit:$('#work_unit').val(),
+			address:$('#address').val(),
+			phone:$('#phone').val(),
+			email:$('#email').val()
+		}
 		$("input").blur(function(){
-			var userInfo={
-				name:$('#name').val(),
-				sex:$('#sex option:checked').val(),
-				IDNum:$("#IDNum").val(),
-				data:$('#date').text(),
-				age:$('#age').val(),
-				status:$('#status option:checked').val(),
-				height:$('#height').val(),
-				weight:$('#weight').val(),
-				p_blood:$('#p_blood').val(),
-				s_blood:$('#s_blood').val(),
-				blood:$('#blood').val(),
-				nation:$('#nation option:checked').val(),
-				occupation:$('#occupation').val(),
-				work_unit:$('#work_unit').val(),
-				address:$('#address').val(),
-				phone:$('#phone').val(),
-				email:$('#email').val()
-			}
 			var info=[];
 			info.push(userInfo);
 			localStorage.setItem("info",JSON.stringify(info));
@@ -171,6 +172,12 @@
 			$('#address').val(item.address);
 			$('#phone').val(item.phone);
 			$('#email').val(item.email);
+		})
+		//点击保存按钮，发送POST请求
+		$('.save').click(function(){
+			yAjax.post('../php/infoSave.php',userInfo,function(res){
+				
+			})
 		})
 	})
 </script>
