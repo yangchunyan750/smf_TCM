@@ -9,6 +9,7 @@
 	 }
 	 $sql="select * from gguser where UserID='".$userName."'and PasswordMD5 ='".$password."'";
 	 $res=$mysqli->execute_dql($sql);
+	 echo $userName;
 	 echo $res->num_rows;
 	 $res->free();
 ?>

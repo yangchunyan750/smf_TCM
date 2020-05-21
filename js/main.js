@@ -11,7 +11,7 @@ $(document).ready(function(){
   $(".nav li,button").hover(function(){
   	  $(this).css('cursor','pointer');
   })
-  $(".next_btn").click(function(){
+  $(".page0 .next_btn").click(function(){
 	  //姓名/出生日期/年龄/性别不能为空
 	  if($('#name').val() == null || $('#name').val() == '' || $('#name').val() == undefined){
 		  $.alerts.alert('提示','姓名不能为空',function(){
@@ -30,13 +30,7 @@ $(document).ready(function(){
 			  return false;
 		  });
 	  }else{
-		  var page = '.'+$(this).parent().attr("page");
-		  $(".leftNav li").removeClass("active");
-		  $('.leftNav '+page).addClass("active");//利用pages属性去控制左侧导航
-		  var loadUrl = $(this).attr("url");//获取url
-		  var index = $(this).attr("page");//获取page属性
-		  yCookie.set("currPageIndex", index);
-		  $('.wrap').load(baseUrl.webProjUrl() + loadUrl); 
+		  nextBtn($(this));
 	  }
   })
   // 点击年龄,根据前面的出生日期进行判断
@@ -46,6 +40,16 @@ $(document).ready(function(){
 		  $("#age").val(parseInt(new Date().getFullYear()) - parseInt(year));
 	  }
   })
+  
+	function nextBtn(that){
+		var page = '.'+that.parent().attr("page");
+		$(".leftNav li").removeClass("active");
+		$('.leftNav '+page).addClass("active");//利用pages属性去控制左侧导航
+		var loadUrl = that.attr("url");//获取url
+		var index = that.attr("page");//获取page属性
+		yCookie.set("currPageIndex", index);
+		$('.wrap').load(baseUrl.webProjUrl() + loadUrl); 
+	}
 });
 
 
