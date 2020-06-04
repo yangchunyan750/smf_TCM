@@ -30,8 +30,8 @@
         </el-form-item>
       </el-form>
     </div>
-	<p class="btns" page="page2">
-	  <button class="btn next_btn" page="2" url="pages/constitution.html" @click="next('dynamicValidateForm')">下一步</button>
+	<p class="btns" page="page2" id="cs">
+	  <button class="btn next_btn" page="2" url="pages/constitution.html" @click="next($(event),'dynamicValidateForm')">下一步</button>
 	  <button class="btn save">保&nbsp;&nbsp;存</button>	
 	</p>
 </div>
@@ -39,15 +39,6 @@
 <script src="../js/index.js"></script>
 <script src="../js/main.js"></script>
 <script>
-	function nextBtn(that){
-		var page = '.'+that.parent().attr("page");
-		$(".leftNav li").removeClass("active");
-		$('.leftNav '+page).addClass("active");//利用pages属性去控制左侧导航
-		var loadUrl = that.attr("url");//获取url
-		var index = that.attr("page");//获取page属性
-		yCookie.set("currPageIndex", index);
-		$('.wrap').load(baseUrl.webProjUrl() + loadUrl); 
-	}
 	var app = new Vue({
 		el:'#app',
 		data:{
@@ -82,71 +73,76 @@
 					}
 				})
 			},
-			next:function(formName){
+			next:function(event,formName){
 				// 读取所有radio的值并保存
 				var radioVal=[];
-				//点击“下一步”时，判断所有的问诊题目是否完成，
+				// 点击“下一步”时，判断所有的问诊题目是否完成，
 				// 如果没有完成进行提示，如果全部勾选则保存当前的数据；
 				// 切换模块时要保存当前的数据；
 				// 如果没有全部勾选，后续的体质辨识初始化不能有具体的方案。
 				let that = this;
 				that.$refs[formName].validate((valid) => {
 					if (valid) {
-					  that.pageLoading = true
-					  let resList = that.dynamicValidateForm.lists
-					  console.log(resList)
-					  let arr = []
-					  if (resList.length > 0) {
-						for (let i = 0, len = resList.length; i < len; i++) {
-						  arr.push({
-							id: resList[i].id,
-							value: resList[i].value
-						  })
-						}
-					  }
-					  nextBtn(that);
-					  console.log(arr);
-					  let userInfo = localStorage.getItem('userInfo')
-					  if (!JSON.parse(userInfo).id) {
-						return false
-					  }
-					  var params = new URLSearchParams();
-					  params.append('userId', JSON.parse(userInfo).id);
-					  params.append('result', JSON.stringify(arr));
-					  //获取单选按钮的value值
-					  $.ajax({
-						type: "POST",
-						url:"../php/inquiryNext.php",
-						contentType: "application/x-www-form-urlencoded",
-						processData: false,
-						data: params,
-						success: function (res) {
-						  console.log(res)
-						  that.pageLoading = false
-						  that.$notify({
-							title: '成功',
-							message: '保存问卷成功',
-							type: 'success'
-						  });
-						  localStorage.clear('userInfo')
-						  // // 把信息存到localStorage后跳转
-						  setTimeout(() => {
-							window.history.go(-1)
-						  }, 1500)
-						},
-						error:function(e){
-						  that.pageLoading = false
-						  that.$notify({
-							title: '提示',
-							message: '提交问卷失败，请重试',
-							type: 'error'
-						   });
-					    }
-				    })
+						var page = $('#cs').attr('page');
+						$(".leftNav li").removeClass("active");
+						$('.leftNav '+page).addClass("active");//利用pages属性去控制左侧导航
+						var loadUrl = $('.next_btn').attr("url");//获取url
+						var index = $('.next_btn').attr("page");//获取page属性
+						yCookie.set("currPageIndex", index);
+						$('.wrap').load(baseUrl.webProjUrl() + loadUrl); 
+					 //  that.pageLoading = true
+					 //  let resList = that.dynamicValidateForm.lists
+					 //  console.log(resList)
+					 //  let arr = []
+					 //  if (resList.length > 0) {
+						// for (let i = 0, len = resList.length; i < len; i++) {
+						//   arr.push({
+						// 	id: resList[i].id,
+						// 	value: resList[i].value
+						//   })
+						// }
+					  // }
+					 //  let userInfo = localStorage.getItem('userInfo')
+					 //  if (!JSON.parse(userInfo).id) {
+						// return false
+					 //  }
+					 //  var params = new URLSearchParams();
+					 //  params.append('userId', JSON.parse(userInfo).id);
+					 //  params.append('result', JSON.stringify(arr));
+					 //  //获取单选按钮的value值
+					 //  $.ajax({
+						// type: "POST",
+						// url:"../php/inquiryNext.php",
+						// contentType: "application/x-www-form-urlencoded",
+						// processData: false,
+						// data: params,
+						// success: function (res) {
+						//   console.log(res)
+						//   that.pageLoading = false
+						//   that.$notify({
+						// 	title: '成功',
+						// 	message: '保存问卷成功',
+						// 	type: 'success'
+						//   });
+						//   localStorage.clear('userInfo')
+						//   // // 把信息存到localStorage后跳转
+						//   setTimeout(() => {
+						// 	window.history.go(-1)
+						//   }, 1500)
+						// },
+						// error:function(e){
+						//   that.pageLoading = false
+						//   that.$notify({
+						// 	title: '提示',
+						// 	message: '提交问卷失败，请重试',
+						// 	type: 'error'
+						//    });
+					   //  }
+				    // })
 				} else {
-				  $.alerts.alert('提示','请完善问卷所有题目',function(){
+					 $.alerts.alert('提示','请完善问卷所有题目!',function(){
 						return false;
-				  })
+					 })
 				}
 			  });
 			}
